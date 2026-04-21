@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Facebook, Instagram, Youtube, Phone, Mail, MapPin } from "lucide-react";
 import { Fredoka, Nunito } from "next/font/google";
 
-import logo from "../public/logopng.png";
+import logo from "../public/logopng.jpg.jpeg";
 
 const headingFont = Fredoka({ subsets: ["latin"], weight: ["600"] });
 const bodyFont = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800"] });
@@ -153,7 +153,7 @@ export default function Footer() {
           {/* Brand Block */}
           <motion.div custom={0} >
             <div className="inline-flex items-center rounded-[24px] bg-white/90 p-4 shadow-[0_8px_28px_rgba(242,155,84,0.18)]">
-              <Image src={logo} alt="MothersPride" className="h-auto w-[160px] object-contain" />
+              <Image src={logo} alt="MotherHood" className="h-auto w-[160px] object-contain" />
             </div>
 
             <div className="mt-8 flex items-start gap-3">
@@ -213,10 +213,9 @@ export default function Footer() {
 
             <ul className="space-y-4">
               {[
-                { icon: Phone, label: "+91 9999996266", color: "#e83d59", bg: "#fde8ef" },
-                { icon: Mail, label: "admissions@motherspride.in", color: "#f29b54", bg: "#fef0d8" },
-                { icon: Mail, label: "franchise@motherspride.in", color: "#a78bfa", bg: "#f0ebff" },
-                { icon: MapPin, label: "Pitampura, Delhi", color: "#60c5a8", bg: "#e4f8f2" },
+                { icon: Phone, label: "+91 9999606090", color: "#e83d59", bg: "#fde8ef" },
+                { icon: Mail, label: "info@motherhoodpreschoolanddaycare.com", color: "#f29b54", bg: "#fef0d8" },
+                { icon: MapPin, label: "Janakpuri, Delhi", color: "#60c5a8", bg: "#e4f8f2" },
               ].map(({ icon: Icon, label, color, bg }, i) => (
                 <motion.li key={i} custom={i * 0.07}>
                   <div className="flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-[0_4px_16px_rgba(15,23,42,0.05)]">
@@ -241,9 +240,9 @@ export default function Footer() {
           className="flex flex-col items-center justify-between gap-4 pt-8 md:flex-row"
         >
           <p className="flex items-center gap-1.5 text-sm font-semibold text-slate-500">
-            © 2026 MothersPride
+            © 2026 MotherHood Preschool & Daycare. All rights reserved.
             <DoodleHeart size={16} color="#e83d59" opacity={1} />
-            Made with love for little learners.
+            Made with love by <Link className="text-[#e83d59] animate-pulse transition-colors" href="https://saasscale.in/" target="_blank" rel="noopener noreferrer">Scale saas</Link>
           </p>
           <div className="flex gap-5 text-sm font-semibold text-slate-500">
             <Link href="/privacy" className="hover:text-[#e83d59] transition-colors">Privacy</Link>

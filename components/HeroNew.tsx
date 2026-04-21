@@ -9,10 +9,10 @@ import Image from "next/image";
 import { Nunito, Fredoka, Quicksand } from "next/font/google";
 
 import heroImage from "../public/compressed/unconditional.webp";
-import image1 from "../public/compressed/beautiful-mother-with-little-daughter.jpg.webp"
-import image2 from "../public/compressed/young-girl-sitting-table-drawing-colorful-picture-with-crayons.jpg.webp"
-import image3 from "../public/compressed/woman-yellow-dress-with-bunch-children-background.jpg.webp"
-import image4 from "../public/compressed/woman-boy-are-smiling-smiling.jpg.webp"
+import image1 from "../public/compressed/beautiful-mother-with-little-daughter.jpg.webp";
+import image2 from "../public/compressed/young-girl-sitting-table-drawing-colorful-picture-with-crayons.jpg.webp";
+import image3 from "../public/compressed/woman-yellow-dress-with-bunch-children-background.jpg.webp";
+import image4 from "../public/compressed/woman-boy-are-smiling-smiling.jpg.webp";
 
 const headingFont = Fredoka({ subsets: ["latin"], weight: ["600"] });
 const bodyFont = Nunito({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
@@ -116,21 +116,33 @@ const HeroBanner: React.FC = () => {
 
       {/* ── MAIN CONTENT ── */}
       <div className="relative z-30 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-10 sm:py-24 lg:py-32">
-        <div className="w-full sm:max-w-xl lg:max-w-2xl flex flex-col items-start gap-4 sm:gap-6">
+        <div className="w-full sm:max-w-xl lg:max-w-3xl flex flex-col items-start gap-4 sm:gap-6">
           
           {/* heading */}
           <FadeUp delay={0.08}>
-            <h1 className={`text-4xl sm:text-7xl lg:text-[88px] leading-[1.1] text-[#E83D59] ${headingFont.className}`}>
-              Motherhood
-              <span className={`block text-[#3B6CA8] text-2xl sm:text-4xl lg:text-[50px] mt-1 ${headingFont.className}`}>
-                Preschool And Daycare
+            <h1 className={`text-5xl sm:text-7xl lg:text-[96px] leading-[1.05] tracking-wide ${headingFont.className}`}>
+              {/* Logo text styling: MothErh... */}
+              <span className="text-[#E83D59]">M</span>
+              <span className="text-[#164681]">o</span>
+              <span className="text-[#E83D59]">th</span>
+              <span className="text-[#164681]">E</span>
+              <span className="text-[#E83D59]">r</span>
+              <span className="text-[#164681]">h</span>
+              <span className="text-[#164681]">o</span>
+              <span className="text-[#E83D59]">o</span>
+              <span className="text-[#164681]">d</span>
+              
+              {/* Subtitle styling */}
+              <span className={`block text-xl sm:text-3xl lg:text-[38px] mt-3 uppercase tracking-[0.15em] ${headingFont.className}`}>
+                <span className="text-[#164681]">Preschool </span>
+                <span className="text-[#E83D59]">And Daycare</span>
               </span>
             </h1>
           </FadeUp>
 
           {/* body */}
           <FadeUp delay={0.16}>
-            <p className="text-sm sm:text-lg text-gray-800 max-w-md leading-relaxed font-medium">
+            <p className="text-sm sm:text-lg text-gray-800 max-w-md leading-relaxed font-medium mt-2">
               A warm, nurturing Montessori space where your little one learns
               through play, builds confidence, and discovers the joy of curiosity
               — wrapped in a{" "}
@@ -141,7 +153,7 @@ const HeroBanner: React.FC = () => {
           {/* tagline */}
           <FadeUp delay={0.22}>
             <p className={`text-base sm:text-xl text-[#3B6CA8] font-bold ${taglineFont.className}`}>
-              ✨ Where Montessori Meets Motherly Love
+              Where Montessori Meets Motherly Love
             </p>
           </FadeUp>
 
@@ -162,7 +174,7 @@ const HeroBanner: React.FC = () => {
           <FadeUp delay={0.42}>
             <div className="flex items-center gap-3 mt-2">
               <div className="flex -space-x-2">
-                {[image1 , image2, image3, image4].map((e, i) => (
+                {[image1, image2, image3, image4].map((e, i) => (
                   <div
                     key={i}
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-100 border-2 border-white overflow-hidden shadow"
@@ -172,7 +184,7 @@ const HeroBanner: React.FC = () => {
                 ))}
               </div>
               <p className="text-xs sm:text-sm text-gray-700 font-semibold">
-                <span className="text-[#E83D59] font-extrabold">200+</span> happy families ⭐
+                <span className="text-[#E83D59] font-extrabold"></span> happy families ❤️
               </p>
             </div>
           </FadeUp>

@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import type { Engine } from "tsparticles-engine";
 import { ShieldCheck, HeartHandshake, Sparkles, BookHeart, School, Smile } from "lucide-react";
 import { Fredoka, Nunito } from "next/font/google";
 import safetyImage from "../../public/compressed/young-european-female-with-daugheters-posing-isolated-white-surface.jpg.webp";
@@ -218,7 +220,7 @@ export default function WhyUsPage() {
             {/* Badge */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 shadow-[0_4px_16px_rgba(232,61,89,0.12)]">
               <Sparkles className="h-4 w-4 text-[#e83d59]" />
-              <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#e83d59]">Why MothersPride</span>
+              <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#e83d59]">Why MotherHood</span>
             </div>
 
             <h1 className={`text-5xl leading-[1.1] text-slate-800 sm:text-6xl lg:text-7xl ${headingFont.className}`}>
@@ -395,7 +397,7 @@ export default function WhyUsPage() {
 
             {/* Left — text */}
             <div className="p-10 lg:p-16">
-              <SectionLabel text="The MothersPride Experience" color="#3b6ca8" />
+              <SectionLabel text="The MotherHood Experience" color="#3b6ca8" />
               <h2 className={`text-4xl leading-tight text-slate-800 md:text-5xl ${headingFont.className}`}>
                 Where confidence grows<br />
                 <span className="text-[#3b6ca8]">through comfort.</span>

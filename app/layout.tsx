@@ -12,8 +12,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'MothersPride Preschool & Daycare - A Loving Start For Every Little Learner',
-  description: 'MothersPride Preschool & Daycare offers a warm, caring space where children learn with joy, confidence, affection, and age-appropriate guidance.',
+  title: 'MothersHood Preschool & Daycare - A Loving Start For Every Little Learner',
+  description: 'MothersHood Preschool & Daycare offers a warm, caring space where children learn with joy, confidence, affection, and age-appropriate guidance.',
   images: [
     {
       url: logo,

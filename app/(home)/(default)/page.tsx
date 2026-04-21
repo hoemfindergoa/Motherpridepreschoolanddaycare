@@ -173,7 +173,7 @@ export default function Page() {
 
           {/* LEFT — copy */}
           <div className="rounded-[44px] bg-white/70 p-8 shadow-[0_16px_56px_rgba(232,61,89,0.08)] backdrop-blur-sm md:p-12 lg:p-14">
-            <SectionLabel text="The MothersPride Feeling" />
+            <SectionLabel text="The MotherHood Feeling" />
 
             <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
               A warm beginning<br />that already feels<br />
@@ -252,14 +252,7 @@ export default function Page() {
             <Image src={familyImage} alt="Happy family" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-amber-950/20 via-transparent to-white/8" />
             {/* Stat chips */}
-            <div className="absolute bottom-5 left-5 right-5 grid grid-cols-3 gap-2">
-              {[["500+", "Families"], ["15+", "Centers"], ["20 yrs", "Of Care"]].map(([num, label]) => (
-                <div key={label} className="flex flex-col items-center rounded-2xl bg-white/80 py-3 backdrop-blur-sm">
-                  <span className={`text-2xl text-slate-800 ${headingFont.className}`}>{num}</span>
-                  <span className="text-[11px] font-bold uppercase tracking-wide text-slate-500">{label}</span>
-                </div>
-              ))}
-            </div>
+           
             {/* Corner doodle */}
             <div className="absolute right-5 top-5 opacity-75">
               <DoodleStar size={30} color="#fff" opacity={0.8} />
@@ -289,12 +282,7 @@ export default function Page() {
               ))}
             </div>
 
-            <div className="mt-10">
-              <Link href="/about"
-                className="inline-flex items-center gap-2 rounded-full bg-[#f29b54] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(242,155,84,0.4)]">
-                Learn More <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+      
           </div>
         </div>
 

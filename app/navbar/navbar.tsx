@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import { Nunito } from 'next/font/google';
 
 // Placeholder for your logo
-import logo from "../../public/logopng.png"; 
+import logo from "../../public/logopng.jpg.jpeg"; 
 
 // --- FONTS ---
 const bodyFont = Nunito({ subsets: ['latin'], weight: ['500', '600', '700', '800', '900'] });
@@ -51,7 +51,7 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/#programs", label: "Programs" },
+    { href: "/Programs", label: "Programs" },
     { href: "/Whyus", label: "Why Us" },
     { href: "/admission", label: "Admissions" },
     { href: "/franchise", label: "Franchise" },
@@ -87,7 +87,7 @@ const Navbar = () => {
           : "bg-transparent py-4 md:py-6"
       }`}
     >
-      <div className="max-w-[1440px] px-4 md:px-12 mx-auto">
+      <div className="max-w-[1560px] px-4 md:px-12 mx-auto">
         <div className="flex items-center justify-between">
 
           {/* --- LOGO --- */}
