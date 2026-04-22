@@ -137,7 +137,7 @@ export type Database = {
         Relationships: [];
       };
 
-      admissions: {
+      admissions_Mottherhood: {
         Row: {
 	name: string,
     email: string,

@@ -16,7 +16,7 @@ export async function createEmail(data: {
 }) {
 	const supabase = await createSupabaseServerClient();
 	const admissionresult = await supabase
-		.from("admissions")
+		.from("admissions_Mottherhood")
 		.insert(data)
 		.single();
 
