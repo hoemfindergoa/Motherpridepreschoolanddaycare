@@ -101,7 +101,7 @@ const Navbar = () => {
                 src={logo} 
                 width={260}  
                 height={80}
-                alt="MothersPride Preschool Logo"
+                alt="MotherHood Preschool Logo"
                 className="object-contain"
                 priority
               />
