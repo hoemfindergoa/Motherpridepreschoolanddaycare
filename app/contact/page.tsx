@@ -53,7 +53,7 @@ function DoodleSquiggle({ width = 80, color = "#3b6ca8", opacity = 0.4 }) {
 
 const contactItems = [
   { icon: Phone, label: "Call Us", value: "+91 9999606090", tone: "rose", link: "tel:+ 9999606090" },
-  { icon: Mail, label: "Email Us", value: "info@motherhoodpreschoolanddaycare.com", tone: "blue", link: "info@motherhoodpreschoolanddaycare.com"},
+  { icon: Mail, label: "Email Us", value: "info@motherhoodpreschoolanddaycare.com", tone: "blue", link: "mailto:info@motherhoodpreschoolanddaycare.com"},
   { icon: MapPin, label: "Visit Us", value: "Janakpuri, Delhi", tone: "amber", link: "#map" },
 ];
 
@@ -102,25 +102,35 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid grid-cols-1 gap-6 md:grid-cols-3"
           >
-            {contactItems.map((item, index) => (
-              <a 
-                key={item.label} 
-                href={item.link}
-                className="group relative flex flex-col items-center justify-center rounded-[40px] bg-white/70 p-10 text-center shadow-[0_16px_56px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:bg-white/95 hover:shadow-[0_24px_80px_rgba(15,23,42,0.1)]"
-              >
-                <div
-                  className={`mb-5 flex h-16 w-16 items-center justify-center rounded-3xl transition-transform duration-300 group-hover:scale-110 ${
-                    item.tone === "rose" ? "bg-rose-100 text-rose-500" :
-                    item.tone === "blue" ? "bg-blue-100 text-blue-500" :
-                    "bg-amber-100 text-amber-500"
-                  }`}
-                >
-                  <item.icon className="h-7 w-7" />
-                </div>
-                <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-                <p className={`mt-2 text-2xl text-slate-900 ${headingFont.className}`}>{item.value}</p>
-              </a>
-            ))}
+           {contactItems.map((item, index) => (
+  <a 
+    key={item.label} 
+    href={item.link}
+    target="_blank"
+    // Applied w-full and overflow-hidden to keep contents strictly inside the card
+    className="group relative flex w-full flex-col items-center justify-center overflow-hidden rounded-[40px] bg-white/70 p-6 sm:p-10 text-center shadow-[0_16px_56px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:bg-white/95 hover:shadow-[0_24px_80px_rgba(15,23,42,0.1)]"
+  >
+    <div
+      // Added shrink-0 so the icon doesn't get squished if the text wraps heavily
+      className={`mb-5 flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl transition-transform duration-300 group-hover:scale-110 ${
+        item.tone === "rose" ? "bg-rose-100 text-rose-500" :
+        item.tone === "blue" ? "bg-blue-100 text-blue-500" :
+        "bg-amber-100 text-amber-500"
+      }`}
+    >
+      <item.icon className="h-7 w-7" />
+    </div>
+    
+    <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-slate-400">
+      {item.label}
+    </p>
+    
+    {/* FIX: Responsive text sizes + w-full + break-all */}
+    <p className={`mt-2 w-full break-all text-lg sm:text-xl lg:text-2xl text-slate-900 ${headingFont.className}`}>
+      {item.value}
+    </p>
+  </a>
+))}
           </motion.div>
 
         </div>

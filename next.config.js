@@ -30,6 +30,10 @@ const nextConfig = {
             protocol: "https",
             hostname: "gist.github.com",
         },
+    {
+            protocol: "https",
+            hostname: "google.com",
+        }
 
 
 

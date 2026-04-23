@@ -105,7 +105,7 @@ export default function CentersPage() {
   useEffect(() => {
     const fetchCenters = async () => {
       setLoading(true);
-      const { data, error } = await supabase.from('Motherhoodcenter').select('*');
+      const { data, error } = await supabase.from('motherhoodcenters').select('*');
       
       if (error) {
         console.error("Error fetching centers:", error);
