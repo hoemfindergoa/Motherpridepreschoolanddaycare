@@ -35,7 +35,7 @@ export async function createFranchise(data: {
     
     // Inserting into a separate 'franchises' table
     const result = await supabase
-        .from("franchises") 
+        .from("motherspridefranchise") 
         .insert(data)
         .select()
         .single();

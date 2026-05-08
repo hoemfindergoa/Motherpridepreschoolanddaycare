@@ -103,7 +103,7 @@ export type Database = {
       }
 
 
-      franchises: {
+      motherspridefranchise: {
         Row: {
           id: number;
           created_at: string;
