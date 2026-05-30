@@ -1,277 +1,124 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowRight, Heart, Facebook, Instagram, Youtube } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Nunito } from 'next/font/google';
+import { Space_Mono } from "next/font/google";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Placeholder for your logo
-import logo from "../../public/logopng.jpg.jpeg"; 
+// Adjust path based on your folder structure
+import logoImage from "../../public/logo.png"; 
 
-// --- FONTS ---
-const bodyFont = Nunito({ subsets: ['latin'], weight: ['500', '600', '700', '800', '900'] });
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 const Navbar = () => {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-
-  // Scroll Effect & Active Section Detection
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      if (pathname === "/") {
-        const sections = ["about", "programs", "gallery"];
-        let current = "";
-        
-        for (const section of sections) {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= 150 && rect.bottom >= 150) {
-              current = `/#${section}`;
-            }
-          }
-        }
-        if (current) setActiveSection(current);
-      } else {
-        setActiveSection("");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
 
   const navLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/Programs", label: "Programs" },
-    { href: "/Whyus", label: "Why Us" },
-    { href: "/admission", label: "Admissions" },
-    { href: "/franchise", label: "Franchise" },
-    { href: "/Ourcenters", label: "Our Centers" },
+    { href: "/programs", label: "Programs" },
+    { href: "/why-us", label: "Why Us" },
+    { href: "/admissions", label: "Admissions" },
+    { href: "/franchisee", label: "Franchisee" },
+    { href: "/our-centers", label: "Our Centers" },
     { href: "/contact", label: "Contact Us" },
   ];
 
-  // Softened social links utilizing the logo colors where appropriate
-  const socialLinks = [
-    { 
-      icon: Facebook, 
-      href: "#", 
-      className: "text-[#3B6CA8] bg-blue-50/50 hover:bg-[#3B6CA8] hover:text-white border-blue-100" 
-    },
-    { 
-      icon: Instagram, 
-      href: "#", 
-      className: "text-[#E83D59] bg-rose-50/50 hover:bg-[#E83D59] hover:text-white border-rose-100" 
-    },
-    { 
-      icon: Youtube, 
-      href: "#", 
-      className: "text-red-500 bg-red-50/50 hover:bg-red-500 hover:text-white border-red-100" 
-    },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          // Matches the warm off-white background of the hero section
-          ? "bg-[#fdfbf7]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] py-3"
-          : "bg-transparent py-4 md:py-6"
-      }`}
-    >
-      <div className="max-w-[1560px] px-4 md:px-12 mx-auto">
-        <div className="flex items-center justify-between">
+    <header className={`fixed top-0 left-0 w-full z-50 ${spaceMono.className}`}>
+      {/* Top Black Line Accent */}
+      <div className="w-full h-[2px] bg-[#0F0A0A]" />
 
-          {/* --- LOGO --- */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <motion.div 
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="relative w-[220px] md:w-[260px] transition-transform duration-300"
-            >
-              <Image 
-                src={logo} 
-                width={260}  
-                height={80}
-                alt="MotherHood Preschool Logo"
-                className="object-contain"
-                priority
-              />
-            </motion.div>
+      {/* Main Navbar */}
+      <nav className="relative w-full h-[89px] bg-[#F7F5E6] border-b-2 border-[#D3D3D3] shadow-sm">
+        <div className="max-w-[1440px] mx-auto h-full px-6 lg:px-16 flex items-center justify-between">
+          
+          {/* Logo */}
+          <Link href="/" className="relative w-[180px] sm:w-[240px] h-[40px] sm:h-[51px]">
+            <Image 
+              src={logoImage} 
+              alt="Motherhood Preschool Logo" 
+              fill 
+              className="object-contain object-left" 
+              priority 
+            />
           </Link>
 
-          {/* --- DESKTOP MENU --- */}
-          <div className="hidden xl:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const isActive = 
-                hoveredLink === link.href || 
-                pathname === link.href || 
-                (pathname === "/" && activeSection === link.href);
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onMouseEnter={() => setHoveredLink(link.href)}
-                  onMouseLeave={() => setHoveredLink(null)}
-                  className="relative group py-2"
-                >
-                  {/* Gentle Floating Heart Indicator */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.5 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 5, scale: 0.5 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="absolute -top-3 left-1/2 -translate-x-1/2"
-                      >
-                         <Heart className="w-3.5 h-3.5 text-[#E83D59] fill-[#E83D59]/30 animate-pulse" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <span className={`text-base transition-colors duration-300 ${
-                    isActive ? "text-[#E83D59] font-bold" : "text-gray-600 font-semibold hover:text-[#E83D59]"
-                  } ${bodyFont.className}`}>
-                    {link.label}
-                  </span>
-                </Link>
-              );
-            })}
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center gap-6 text-[14px] text-[#0F0A0A] font-bold">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={`hover:underline hover:text-[#E2324E] transition-colors ${
+                  pathname === link.href ? "underline text-[#E2324E]" : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* --- RIGHT ACTIONS --- */}
-          <div className="flex items-center gap-4 md:gap-6">
-            
-            {/* Elegant Button matching Hero Section */}
-            <Link href="/admission" className="hidden sm:block">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`
-                  bg-[#E83D59] text-white rounded-full px-7 py-2.5 
-                  shadow-lg shadow-rose-200 hover:shadow-xl 
-                  flex items-center gap-2 text-sm font-bold transition-all
-                  ${bodyFont.className} tracking-wide
-                `}
-              >
-                Enroll Now <ArrowRight className="w-4 h-4" />
-              </motion.button>
+          {/* Right Actions */}
+          <div className="flex items-center gap-4">
+            {/* Desktop CTA */}
+            <Link 
+              href="/contact" 
+              className="hidden sm:flex items-center justify-center w-[170px] h-[52px] bg-[#E2324E] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] active:shadow-none active:translate-y-[5px] active:translate-x-[5px] transition-all"
+            >
+              Book a Call →
             </Link>
 
-            {/* Social Icons */}
-            <div className="hidden md:flex items-center gap-3 border-l-2 border-gray-100 pl-6">
-                {socialLinks.map((social, i) => (
-                    <a 
-                        key={i} 
-                        href={social.href} 
-                        target="_blank" 
-                        rel="noreferrer"
-                        className={`p-2 rounded-full border transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${social.className}`}
-                    >
-                        <social.icon className="w-4 h-4" />
-                    </a>
-                ))}
-            </div>
-
-            {/* Mobile Toggle */}
+            {/* Mobile Menu Toggle Button */}
             <button
-              className="xl:hidden p-2 text-gray-500 hover:text-[#E83D59] hover:bg-rose-50 rounded-full transition-colors"
+              className="lg:hidden flex items-center justify-center w-[44px] h-[44px] bg-[#F7F5E6] border-[2px] border-[#0F0A0A] rounded-[4px] shadow-[3px_3px_0px_#0F0A0A] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[2px_2px_0px_#0F0A0A] active:shadow-none active:translate-y-[3px] active:translate-x-[3px] transition-all text-[#0F0A0A]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* --- MOBILE MENU --- */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="xl:hidden bg-[#fdfbf7] absolute w-full left-0 top-full overflow-y-auto pb-24 shadow-xl"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="lg:hidden absolute top-[91px] left-0 w-full bg-[#F7F5E6] border-b-2 border-[#D3D3D3] shadow-lg overflow-hidden origin-top"
           >
-            <div className="container mx-auto px-6 py-8 flex flex-col gap-3">
-              {navLinks.map((link, i) => {
-                 const isActive = pathname === link.href || (pathname === "/" && activeSection === link.href);
-                 
-                 return (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05, type: "spring", stiffness: 200 }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-5 py-4 rounded-2xl text-lg font-bold transition-all border-2 ${bodyFont.className} ${
-                        isActive 
-                          ? "text-[#E83D59] bg-[#E83D59]/5 border-[#E83D59]/10 shadow-sm" 
-                          : "text-gray-600 bg-white border-transparent hover:border-gray-100 shadow-sm"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        {isActive ? <Heart className="w-5 h-5 fill-[#E83D59]/30 text-[#E83D59]" /> : <span className="w-5" />}
-                        {link.label}
-                      </div>
-                    </Link>
-                  </motion.div>
-                 );
-              })}
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-6"
-              >
-                <Link href="/admission" onClick={() => setMobileMenuOpen(false)}>
-                  <button className={`
-                    w-full bg-[#E83D59] text-white py-4 rounded-2xl font-bold text-lg 
-                    shadow-lg shadow-rose-200 flex justify-center items-center gap-2 transition-all
-                    ${bodyFont.className} tracking-wide
-                  `}>
-                    Enroll Now <ArrowRight className="w-5 h-5" />
-                  </button>
+            <div className="flex flex-col px-6 py-8 gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-[16px] font-bold text-[#0F0A0A] border-b-2 border-[#E5E3D4] pb-3 hover:text-[#E2324E] transition-colors"
+                >
+                  {link.label}
                 </Link>
-              </motion.div>
-
-              {/* Mobile Socials */}
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="flex justify-center gap-4 py-8 border-t-2 border-gray-100 mt-6"
+              ))}
+              
+              <Link 
+                href="/contact" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-6 flex items-center justify-center w-full h-[56px] bg-[#E2324E] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] active:shadow-none active:translate-y-[5px] active:translate-x-[5px] transition-all"
               >
-                {socialLinks.map((social, i) => (
-                    <a 
-                        key={i} 
-                        href={social.href} 
-                        className={`p-3.5 rounded-full border shadow-sm ${social.className}`}
-                    >
-                        <social.icon className="w-5 h-5" />
-                    </a>
-                ))}
-              </motion.div>
+                Book a Call →
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 };
 

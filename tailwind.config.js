@@ -19,6 +19,8 @@ module.exports = {
       fontFamily: {
         fedorikanew: ['fedorikaregular'],
         fedorikamedium: ['Fedorikamedium'],
+        motherhoodfont: ['motherhoodfont'],
+        motherhoodfontmedium: ['motherhoodfontmedium'],
 
         },
       colors: {
