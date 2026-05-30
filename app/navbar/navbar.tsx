@@ -22,11 +22,11 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/programs", label: "Programs" },
+    { href: "/Programs", label: "Programs" },
     { href: "/why-us", label: "Why Us" },
-    { href: "/admissions", label: "Admissions" },
-    { href: "/franchisee", label: "Franchisee" },
-    { href: "/our-centers", label: "Our Centers" },
+    { href: "/admission", label: "Admissions" },
+    { href: "/franchise", label: "Franchisee" },
+    { href: "/Ourcenters", label: "Our Centers" },
     { href: "/contact", label: "Contact Us" },
   ];
 
@@ -69,7 +69,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             {/* Desktop CTA */}
             <Link 
-              href="/contact" 
+              href="/admission" 
               className="hidden sm:flex items-center justify-center w-[170px] h-[52px] bg-[#E2324E] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] active:shadow-none active:translate-y-[5px] active:translate-x-[5px] transition-all"
             >
               Book a Call →
