@@ -284,7 +284,7 @@ const PeekABooGame: React.FC = () => {
       {/* ── Game Launch Button (Matches Hero CTA) ── */}
       <button
         onClick={() => { setIsOpen(true); startGame(); }}
-        className="w-full sm:w-[207px] h-[52px] flex items-center justify-center bg-[#FFD93D] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] transition-all active:shadow-none active:translate-y-[5px] active:translate-x-[5px]"
+        className="w-[207px] sm:w-[207px] h-[52px] flex items-center justify-center bg-[#FFD93D] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] transition-all active:shadow-none active:translate-y-[5px] active:translate-x-[5px]"
       >
         🐶 Play Game
       </button>

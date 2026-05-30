@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Space_Mono } from "next/font/google";
 import STackTowerGame from "@/components/Game";
 
-import heroIllustration from "../public/motherchild.png";
+import heroIllustration from "../public/compressed/heronew.png";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -36,19 +36,38 @@ const PlayfulBackground = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   if (!mounted) return null;
+
+  // Floating background elements configured for different speeds and starting points
+  const floatingElements = [
+    { icon: "🧸", startX: "10vw", duration: 22, delay: 0, rotate: 15, size: "text-[50px] lg:text-[90px]" },
+    { icon: "🧶", startX: "85vw", duration: 25, delay: 2, rotate: -25, size: "text-[60px] lg:text-[100px]" },
+    { icon: "💖", startX: "45vw", duration: 18, delay: 5, rotate: 10, size: "text-[45px] lg:text-[80px]" },
+    { icon: "🧵", startX: "70vw", duration: 20, delay: 1, rotate: -15, size: "text-[55px] lg:text-[85px]" },
+    { icon: "🪆", startX: "25vw", duration: 24, delay: 7, rotate: 20, size: "text-[50px] lg:text-[95px]" }
+  ];
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <motion.div
-        initial={{ y: "120vh", x: "-10vw", rotate: 45 }}
-        animate={{ y: "-20vh", x: "80vw" }}
-        transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatDelay: 5.5 }}
-        className="absolute bottom-0 left-0 drop-shadow-xl"
-      >
-        <span className="text-[40px] sm:text-[60px] lg:text-[90px]">🚀</span>
-      </motion.div>
+      {floatingElements.map((el, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ y: "110vh", x: el.startX, rotate: 0, opacity: 0 }}
+          animate={{ y: "-20vh", rotate: el.rotate, opacity: [0, 0.4, 0.4, 0] }}
+          transition={{ 
+            duration: el.duration, 
+            ease: "linear", 
+            repeat: Infinity, 
+            delay: el.delay 
+          }}
+          className="absolute drop-shadow-[0_8px_8px_rgba(0,0,0,0.1)]"
+        >
+          <span className={`${el.size} filter contrast-125 saturate-75 opacity-60 mix-blend-multiply block`}>
+            {el.icon}
+          </span>
+        </motion.div>
+      ))}
     </div>
   );
 };
@@ -60,11 +79,12 @@ const HeroBanner: React.FC = () => {
       <PlayfulBackground />
 
       {/* MAIN HERO CONTENT */}
-      <main className="relative flex-1 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[66px] pt-[100px] sm:pt-[120px] lg:pt-[160px] pb-[80px] lg:pb-[100px] flex flex-col lg:flex-row items-center lg:items-start justify-between z-10 pointer-events-none">
+      {/* Changed back to flex-col since the image is now absolutely positioned in the background on mobile */}
+      <main className="relative flex-1 w-full mx-auto px-4 sm:px-6 lg:px-[66px] pt-[100px] sm:pt-[120px] lg:pt-[160px] pb-[80px] lg:pb-[100px] flex flex-col lg:flex-row items-center lg:items-start justify-between z-10 pointer-events-none">
 
         {/* Left Text Column */}
-        <div className="w-full lg:w-[583px] flex flex-col items-center lg:items-start text-center lg:text-left gap-5 sm:gap-6 z-20 pointer-events-auto">
-
+        {/* Added relative z-20 to ensure it sits on top of the background image on mobile */}
+        <div className="w-full relative z-20 mt-6 lg:mt-0 lg:w-[583px] md:ml-[100px] flex flex-col items-center lg:items-start text-center lg:text-left gap-5 sm:gap-6 pointer-events-auto">
           <FadeUp delay={0.1}>
             <div className="flex items-center gap-2 sm:gap-3 bg-[#FFD7DD] rounded-lg px-3 py-2 border border-rose-200">
               <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#0F9418] rounded-full" />
@@ -73,10 +93,7 @@ const HeroBanner: React.FC = () => {
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <h1
-              className="text-[36px] leading-[42px] sm:text-[48px] sm:leading-[56px] lg:text-[56px] lg:leading-[67px] text-black tracking-wide"
-              style={{ fontFamily: "'VVDS Fifties', sans-serif", fontWeight: 400 }}
-            >
+            <h1 className="text-[36px] leading-[42px] font-bold sm:text-[48px] sm:leading-[56px] lg:text-[56px] lg:leading-[67px] text-black tracking-wide font-fedorikamedium">
               Where Montessori Meets Motherly Love
             </h1>
           </FadeUp>
@@ -90,30 +107,27 @@ const HeroBanner: React.FC = () => {
           {/* CTA Buttons Row */}
           <FadeUp delay={0.4} className="w-full">
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-3 mt-2 sm:mt-4 w-full">
-              {/* Primary CTA */}
-              <button className="w-full sm:w-[207px] h-[52px] flex items-center justify-center bg-[#E2324E] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] transition-all active:shadow-none active:translate-y-[5px] active:translate-x-[5px]">
+              <button className="w-[206px] sm:w-[207px] h-[52px] flex items-center justify-center bg-[#E2324E] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] transition-all active:shadow-none active:translate-y-[5px] active:translate-x-[5px]">
                 Schedule a Tour
               </button>
-
-              {/* ── GAME BUTTON ── */}
               <div className="w-full sm:w-auto flex justify-center">
                 <STackTowerGame />
               </div>
             </div>
           </FadeUp>
-
         </div>
 
-        {/* Right Image Column */}
-        <FadeUp delay={0.5} className="w-full lg:w-auto mt-10 sm:mt-12 lg:mt-0 lg:absolute lg:right-[40px] lg:top-[120px] z-10 flex justify-center pointer-events-none">
-          <div className="relative w-full max-w-[320px] sm:max-w-[450px] lg:max-w-none lg:w-[878px] h-[280px] sm:h-[350px] lg:h-[590px]">
+        {/* Right Image Column - Now acts as a background on mobile, and side-column on desktop */}
+        <FadeUp delay={0.5} className="absolute inset-0 bottom-[48px] sm:bottom-[54px] lg:bottom-[54px] lg:left-auto lg:right-0 lg:w-[75%] z-0 lg:z-10 pointer-events-none">
+          <div className="relative w-full h-full">
             <Image
               src={heroIllustration}
               alt="Children playing with Montessori blocks"
               fill
               priority
-              className="object-contain object-center lg:object-right"
-              sizes="(max-width: 640px) 320px, (max-width: 1024px) 450px, 878px"
+              /* Reduced opacity on mobile for text readability, full opacity on desktop */
+              className="object-cover object-top opacity-30 lg:opacity-100 lg:object-cover lg:object-right transition-opacity duration-300"
+              sizes="(max-width: 1024px) 100vw, 55vw"
             />
           </div>
         </FadeUp>
