@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Space_Mono } from "next/font/google";
-import STackTowerGame from "@/components/Game"; 
+import STackTowerGame from "@/components/Game";
 
 import heroIllustration from "../public/motherchild.png";
 
@@ -33,7 +33,10 @@ const FadeUp = ({
 
 const PlayfulBackground = () => {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   if (!mounted) return null;
 
   return (
@@ -44,7 +47,7 @@ const PlayfulBackground = () => {
         transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatDelay: 5.5 }}
         className="absolute bottom-0 left-0 drop-shadow-xl"
       >
-        <span className="text-[60px] lg:text-[90px]">🚀</span>
+        <span className="text-[40px] sm:text-[60px] lg:text-[90px]">🚀</span>
       </motion.div>
     </div>
   );
@@ -56,21 +59,22 @@ const HeroBanner: React.FC = () => {
       
       <PlayfulBackground />
 
-      {/* MAIN HERO CONTENT - Added pt-[120px] to account for fixed navbar */}
-      <main className="relative flex-1 w-full max-w-[1440px] mx-auto px-6 lg:px-[66px] pt-[120px] lg:pt-[160px] pb-[100px] flex flex-col lg:flex-row items-center justify-between z-10 pointer-events-none">
+      {/* MAIN HERO CONTENT */}
+      <main className="relative flex-1 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[66px] pt-[100px] sm:pt-[120px] lg:pt-[160px] pb-[80px] lg:pb-[100px] flex flex-col lg:flex-row items-center lg:items-start justify-between z-10 pointer-events-none">
 
-        <div className="w-full lg:w-[583px] flex flex-col items-start gap-6 z-20 pointer-events-auto">
+        {/* Left Text Column */}
+        <div className="w-full lg:w-[583px] flex flex-col items-center lg:items-start text-center lg:text-left gap-5 sm:gap-6 z-20 pointer-events-auto">
 
           <FadeUp delay={0.1}>
-            <div className="flex items-center gap-3 bg-[#FFD7DD] rounded-lg px-3 py-2 border border-rose-200">
-              <div className="w-3 h-3 bg-[#0F9418] rounded-full" />
-              <span className="font-sans font-medium text-[16px] text-black">Admission open</span>
+            <div className="flex items-center gap-2 sm:gap-3 bg-[#FFD7DD] rounded-lg px-3 py-2 border border-rose-200">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#0F9418] rounded-full" />
+              <span className="font-sans font-medium text-[14px] sm:text-[16px] text-black">Admission open</span>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.2}>
             <h1
-              className="text-5xl lg:text-[56px] lg:leading-[67px] text-black tracking-wide"
+              className="text-[36px] leading-[42px] sm:text-[48px] sm:leading-[56px] lg:text-[56px] lg:leading-[67px] text-black tracking-wide"
               style={{ fontFamily: "'VVDS Fifties', sans-serif", fontWeight: 400 }}
             >
               Where Montessori Meets Motherly Love
@@ -78,43 +82,45 @@ const HeroBanner: React.FC = () => {
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <p className="text-[16px] leading-[24px] tracking-[-0.01em] text-black max-w-[500px]">
+            <p className="text-[15px] sm:text-[16px] leading-[22px] sm:leading-[24px] tracking-[-0.01em] text-black max-w-[340px] sm:max-w-[450px] lg:max-w-[500px]">
               A warm, nurturing Montessori space where your little one learns through play, builds confidence, and discovers the joy of curiosity - wrapped in a mother's love.
             </p>
           </FadeUp>
 
           {/* CTA Buttons Row */}
-          <FadeUp delay={0.4}>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-2 w-full">
+          <FadeUp delay={0.4} className="w-full">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-3 mt-2 sm:mt-4 w-full">
               {/* Primary CTA */}
               <button className="w-full sm:w-[207px] h-[52px] flex items-center justify-center bg-[#E2324E] border-[2.5px] border-[#2E5298] shadow-[5px_5px_0px_#2E5298] rounded-[4px] text-[16px] font-bold text-[#000919] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[3px_3px_0px_#2E5298] transition-all active:shadow-none active:translate-y-[5px] active:translate-x-[5px]">
                 Schedule a Tour
               </button>
 
-              {/* ── GAME BUTTON ── Drop-in the StackTowerGame component here */}
-              <STackTowerGame />
+              {/* ── GAME BUTTON ── */}
+              <div className="w-full sm:w-auto flex justify-center">
+                <STackTowerGame />
+              </div>
             </div>
           </FadeUp>
 
         </div>
 
         {/* Right Image Column */}
-        <FadeUp delay={0.5} className="w-full lg:w-auto mt-12 lg:mt-0 lg:absolute lg:right-[40px] lg:top-[120px] z-10 flex justify-center pointer-events-none">
-          <div className="relative w-full max-w-[500px] lg:max-w-none lg:w-[878px] h-[400px] lg:h-[590px]">
+        <FadeUp delay={0.5} className="w-full lg:w-auto mt-10 sm:mt-12 lg:mt-0 lg:absolute lg:right-[40px] lg:top-[120px] z-10 flex justify-center pointer-events-none">
+          <div className="relative w-full max-w-[320px] sm:max-w-[450px] lg:max-w-none lg:w-[878px] h-[280px] sm:h-[350px] lg:h-[590px]">
             <Image
               src={heroIllustration}
               alt="Children playing with Montessori blocks"
               fill
               priority
               className="object-contain object-center lg:object-right"
-              sizes="(max-width: 1024px) 100vw, 878px"
+              sizes="(max-width: 640px) 320px, (max-width: 1024px) 450px, 878px"
             />
           </div>
         </FadeUp>
       </main>
 
       {/* BOTTOM TICKER */}
-      <div className="absolute bottom-0 left-0 w-full h-[54px] bg-[#E2324E] flex items-center overflow-hidden z-30 pointer-events-auto">
+      <div className="absolute bottom-0 left-0 w-full h-[48px] sm:h-[54px] bg-[#E2324E] flex items-center overflow-hidden z-30 pointer-events-auto">
         <motion.div
           initial={{ x: "0%" }}
           animate={{ x: "-50%" }}
@@ -122,7 +128,7 @@ const HeroBanner: React.FC = () => {
           className="flex whitespace-nowrap"
         >
           {[...Array(4)].map((_, i) => (
-            <span key={i} className="text-[16px] leading-[24px] tracking-[0.05em] text-black px-4">
+            <span key={i} className="text-[14px] sm:text-[16px] leading-[24px] tracking-[0.05em] text-black px-4">
               My daughter absolutely loves going here every morning. The teachers truly care like family. -
             </span>
           ))}
