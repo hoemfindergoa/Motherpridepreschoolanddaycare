@@ -123,7 +123,7 @@ const AnimatedBackground = () => {
 export default function Footer() {
   return (
     <footer
-      className={`relative w-full bg-[#F7F5E5] md:py-[50px] border-t-[4px] border-black overflow-hidden pt-10 sm:pt-14 font-fedorikamedium`}
+      className={`relative w-full bg-[#F7F5E5] md:py-[70px] border-t-[4px] border-black overflow-hidden pt-10 sm:pt-14 font-fedorikamedium`}
     >
       <AnimatedBackground />
 

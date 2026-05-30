@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Space_Mono } from "next/font/google";
-import { eslint } from "@/next.config";
 
 // ─── Fonts ───────────────────────────────────────────────────────────────────
 const spaceMono = Space_Mono({
@@ -144,7 +143,7 @@ const PeekABooGame: React.FC = () => {
   const [activeColor, setActiveColor] = useState<string>("#FFD93D");
 
   // Timers and Audio Refs
-  const isPlayingRef = useRef(false); // <--- Added this to fix the stale closure!
+  const isPlayingRef = useRef(false);
   const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
   const nextSpawnTimerRef = useRef<NodeJS.Timeout | null>(null);
   const bgMusicRef = useRef<HTMLAudioElement | null>(null);
@@ -154,6 +153,8 @@ const PeekABooGame: React.FC = () => {
     if (typeof window !== "undefined") {
       bgMusicRef.current = new Audio("/bg-music.mp3");
       bgMusicRef.current.loop = true;
+      // Essential for mobile: Preload audio
+      bgMusicRef.current.preload = "auto";
     }
     return () => {
       if (bgMusicRef.current) {
@@ -162,13 +163,6 @@ const PeekABooGame: React.FC = () => {
       }
     };
   }, []);
-
-  // Update Audio Intensity based on Score
-  useEffect(() => {
-    if (bgMusicRef.current && phase === "playing") {
-      bgMusicRef.current.playbackRate = 1.0 + (score * (0.5 / TARGET_SCORE));
-    }
-  }, [score, phase]);
 
   // Stop/Start Audio based on phase
   useEffect(() => {
@@ -192,16 +186,15 @@ const PeekABooGame: React.FC = () => {
 
   // Game Loop Logic
   const spawnPet = useCallback((currentScore: number) => {
-    if (!isPlayingRef.current) return; // Strict check using Ref instead of Phase
+    if (!isPlayingRef.current) return;
 
     const randomHole = Math.floor(Math.random() * GRID_SIZE);
     const randomPet = PETS[Math.floor(Math.random() * PETS.length)];
     const color = COLORS[Math.floor(Math.random() * (COLORS.length - 1))];
 
     setActiveHole(randomHole);
-    /* eslint-disable */
-    setCurrentPet(randomPet!);
-    setActiveColor(color!);
+    setCurrentPet(randomPet as string);
+    setActiveColor(color as string);
 
     // Speed formula: starts at 1200ms, drops down to 600ms as score increases
     const visibleDuration = Math.max(600, 1200 - (currentScore * 40));
@@ -239,12 +232,18 @@ const PeekABooGame: React.FC = () => {
     setLives(STARTING_LIVES);
     setActiveHole(null);
     setPhase("playing");
-    isPlayingRef.current = true; // Activating strictly via Ref
+    isPlayingRef.current = true; 
 
     if (bgMusicRef.current) {
       bgMusicRef.current.currentTime = 0;
-      bgMusicRef.current.playbackRate = 1.0;
-      bgMusicRef.current.play().catch((e) => console.log("Audio autoplay prevented by browser:", e));
+      // Start playing immediately on user interaction to satisfy mobile browser policies
+      const playPromise = bgMusicRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn("Audio playback failed on mobile interaction:", error);
+        });
+      }
     }
 
     // Spawn first pet after a small delay
@@ -302,7 +301,7 @@ const PeekABooGame: React.FC = () => {
             }}
           >
             <motion.div
-              className="relative overflow-hidden bg-[#F7F5E6] border-[3px] border-[#0F0A0A] shadow-[12px_12px_0px_#0F0A0A] rounded-[8px] flex flex-col"
+              className="relative overflow-hidden md:mt-2 mt-[80px] bg-[#F7F5E6] border-[3px] border-[#0F0A0A] shadow-[12px_12px_0px_#0F0A0A] rounded-[8px] flex flex-col"
               style={{ width: 420, maxWidth: "100vw" }}
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
@@ -347,6 +346,8 @@ const PeekABooGame: React.FC = () => {
                     return (
                       <div
                         key={index}
+                        // Added touch-action to prevent zooming on double tap on mobile
+                        style={{ touchAction: 'manipulation' }}
                         onClick={() => handleTapPet(index)}
                         className="relative w-full aspect-square bg-[#0F0A0A] rounded-[8px] overflow-hidden cursor-pointer shadow-[inset_0px_6px_0px_rgba(0,0,0,0.4)]"
                       >
