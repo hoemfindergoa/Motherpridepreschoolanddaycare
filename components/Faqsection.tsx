@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import deer from "@/public/websiteassest/dear image.png";
+import sunflower from "@/public/websiteassest/sunflower.png";
 import { 
   Plus, 
   Minus, 
@@ -60,11 +63,6 @@ const faqData = [
     icon: Clock
   },
   {
-    question: "What activities will my child be engaged in?",
-    answer: "Children participate in Montessori activities, storytelling, phonics, numeracy, art & craft, music, dance, sensory play and outdoor activities designed for joyful learning.",
-    icon: Sparkles
-  },
-  {
     question: "How do you ensure hygiene and cleanliness?",
     answer: "Our classrooms, toys and play areas are cleaned and sanitized with regular handwashing routines and child-friendly hygiene practices.",
     icon: Sparkles
@@ -75,30 +73,16 @@ const faqData = [
     icon: MessageCircle
   },
   {
-    question: "Do you offer CCTV access to parents?",
-    answer: "CCTV access is available as per school policy, ensuring transparency while maintaining privacy and safety standards.",
-    icon: Search
-  },
-  {
     question: "What is the admission process?",
     answer: "Admissions include counseling, school visit, form submission, and orientation, ensuring a smooth and comfortable onboarding for both child and parents.",
     icon: School
-  },
-  {
-    question: "Is there a trial or settling period?",
-    answer: "Yes. We offer a settling-in period to help children adapt comfortably to the new environment at their own pace.",
-    icon: Smile
   },
   {
     question: "Do you celebrate festivals and special days?",
     answer: "Absolutely. We celebrate festivals, birthdays, theme days, and cultural events to encourage social skills, creativity, and inclusivity.",
     icon: Calendar
   },
-  {
-    question: "What makes Little Dreamers different?",
-    answer: "Our child-centric approach, safe environment, trained educators, engaging curriculum, and strong parent partnership make us a trusted choice.",
-    icon: HelpCircle
-  },
+
   {
     question: "How can parents schedule a school visit?",
     answer: "Parents can call us, visit the campus, or fill out the inquiry form, and our team will schedule a convenient school tour.",
@@ -195,7 +179,28 @@ const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className={`w-full py-20 bg-white relative overflow-hidden ${bodyFont.className}`}>
+    <section className={ `relative w-full py-20 bg-purple-400  overflow-hidden ${bodyFont.className}`}>
+        <div className="absolute bottom-0 left-0 w-full z-20  overflow-hidden leading-none  pointer-events-none">
+        <svg
+          className="relative block w-full h-[60px] sm:h-[90px] lg:h-[130px]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+        >
+          {/* Note: Change "fill-white" to match the section directly below this one */}
+          <path
+            d="M0,64L48,53.3C96,43,192,21,288,26.7C384,32,480,64,576,74.7C672,85,768,75,864,58.7C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+            className="fill-purple-400"
+          ></path>
+        </svg>
+      </div>
+         <div className="absolute bottom-20 -left-8 w-36 lg:w-[400px] opacity-100 z-0 hidden md:block rotate-[5deg]">
+        <Image src={deer} alt="Decorative Tree" className="w-full h-auto object-contain" />
+      </div>
+
+       <div className="absolute top-2 right-4 w-48 lg:w-[350px] opacity-100 z-0 hidden md:block rotate-[-5deg]">
+        <Image src={sunflower} alt="Decorative Green Tree" className="w-full h-auto object-contain" />
+      </div>
       
       {/* Background Doodles */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">

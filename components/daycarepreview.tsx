@@ -5,9 +5,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart, Star, Sun, ShieldCheck, ArrowRight, Activity } from "lucide-react";
 import { Space_Mono } from "next/font/google";
+import christmastree from "@/public/websiteassest/moon.png"; // Your Christmas tree
 import Link from "next/link";
 
-// Using Space Mono to match the brutalist/typewriter aesthetic
+// Using Space Mono for playful accents
 const spaceMono = Space_Mono({ 
   subsets: ["latin"], 
   weight: ["400", "700"] 
@@ -16,67 +17,93 @@ const spaceMono = Space_Mono({
 // IMPORTANT: Update these paths to your actual images
 import daycareImage from "@/public/compressed/young-boy-girl-playing-indoors-with-eco-toys.jpg.webp";
 import daycareBgIllustration from "@/public/compressed/daycarebackground.png";
+import treeImage from "@/public/websiteassest/jupyter.png"; // Your Christmas tree
 
 export default function DaycareSection() {
   const features = [
-    { icon: Heart, text: "Safe supervision", color: "#E54D35" }, // Red
-    { icon: Star, text: "Comforting routine", color: "#F29B54" }, // Orange
-    { icon: Sun, text: "Play & rest", color: "#75C05B" }, // Green
-    { icon: ShieldCheck, text: "Parent peace of mind", color: "#A275E1" }, // Purple
+    { icon: Heart, text: "Safe supervision", color: "#E54D35", bg: "#FDECE9" }, // Red
+    { icon: Star, text: "Comforting routine", color: "#F29B54", bg: "#FEF4EB" }, // Orange
+    { icon: Sun, text: "Play & rest", color: "#75C05B", bg: "#F1F9EE" }, // Green
+    { icon: ShieldCheck, text: "Peace of mind", color: "#A275E1", bg: "#F5F1FC" }, // Purple
   ];
 
   return (
-    <section className={`relative w-full py-24 sm:py-32 bg-[#F7F5E5] border-b-2 border-black overflow-hidden ${spaceMono.className}`}>
+    <section className={`relative w-full py-24 sm:py-32 lg:py-30 bg-yellow-100 z-10 overflow-hidden ${spaceMono.className}`}>
       
-      {/* ── BACKGROUND ILLUSTRATION (Faded on the left) ── */}
-      <div className="absolute inset-y-0 left-0 z-0 w-full md:w-2/3 lg:w-1/2 pointer-events-none opacity-20 lg:opacity-30">
-        <div 
-          className="relative w-full h-full"
-          style={{ maskImage: "linear-gradient(to left, transparent, black 60%)", WebkitMaskImage: "linear-gradient(to left, transparent, black 60%)" }}
+      {/* ── TOP LAYERED DOUBLE WAVE (Matches screenshot perfectly & prevents gaps) ── */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        <svg
+          className="relative block w-[calc(100%+1.3px)] h-[80px] sm:h-[110px] lg:h-[20px]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
         >
-          <Image
-            src={daycareBgIllustration}
-            alt="Daycare Background Illustration"
-            fill
-            className="object-cover object-left"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </div>
+        </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-[66px]">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        <svg
+          className="relative block w-full h-[60px] sm:h-[90px] lg:h-[130px]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+        >
+          {/* Note: Change "fill-white" to match the section directly below this one */}
+          <path
+            d="M0,64L48,53.3C96,43,192,21,288,26.7C384,32,480,64,576,74.7C672,85,768,75,864,58.7C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+            className="fill-purple-400"
+          ></path>
+        </svg>
+      </div>
+       <div className="absolute bottom-14 -left-8 w-36 lg:w-[400px] opacity-70 z-0 hidden md:block rotate-[5deg]">
+        <Image src={christmastree} alt="Decorative Tree" className="w-full h-auto object-contain" />
+      </div>
+
+       <div className="absolute -top-16 -right-10 w-48 lg:w-[350px] opacity-100 z-0 hidden md:block rotate-[-5deg]">
+        <Image src={treeImage} alt="Decorative Green Tree" className="w-full h-auto object-contain" />
+      </div>
+     
+
+      {/* ── MAIN CONTENT ── */}
+      <div className="relative -z-20 max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 mt-2">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-4 lg:gap-20 items-center">
+
+      
+
           
-          {/* LEFT SIDE: Content Card */}
+          
+          {/* LEFT SIDE: Content */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-white border-2 border-black p-8 sm:p-12 shadow-[8px_8px_0px_#000000]"
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center text-center lg:items-start lg:text-left z-10"
           >
-            {/* Tag / Label */}
-            <div className="inline-flex items-center gap-2 mb-6">
+            {/* Playful Tag (Matched to screenshot) */}
+            <div className="inline-flex items-center justify-center lg:justify-start gap-2 mb-8 bg-white px-5 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
               <Activity className="h-5 w-5 text-[#3B82F6] stroke-[2.5px]" />
-              <span className="text-[13px] font-black uppercase tracking-widest text-black">
+              <span className="text-[12px] sm:text-[13px] font-black uppercase tracking-[0.15em] text-[#3B82F6]">
                 Daycare with heart
               </span>
             </div>
 
             {/* Heading */}
-            <h2 className="text-[40px] sm:text-[56px] font-black leading-[1.05] tracking-tighter text-black uppercase mb-8">
-              A soft <br className="hidden sm:block" /> extension <br className="hidden sm:block" /> of home.
+            <h2 className="text-[45px] font-fedorikanew sm:text-[55px] lg:text-[52px] font-black leading-[1.05] tracking-tight text-[#0F172A] mb-10">
+              A soft extension  of home.
             </h2>
 
-            {/* Feature Tags */}
-            <div className="flex flex-wrap gap-3 sm:gap-4 mb-10">
+            {/* Feature Grid */}
+            <div className="grid grid-cols-2 gap-4 mb-12 w-full max-w-[500px]">
               {features.map((feature, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-center gap-2 bg-[#F7F5E5] border-2 border-black px-4 py-2 shadow-[3px_3px_0px_#000000] hover:-translate-y-1 transition-transform"
+                  className="flex items-center gap-3 bg-white px-4 py-3.5 rounded-2xl shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
                 >
-                  <feature.icon className="h-4 w-4 stroke-[2.5px]" style={{ color: feature.color }} />
-                  <span className="text-[13px] font-bold text-black uppercase tracking-wider">
+                  <div className="p-2 rounded-full" style={{ backgroundColor: feature.bg }}>
+                    <feature.icon className="h-5 w-5 stroke-[2.5px]" style={{ color: feature.color }} />
+                  </div>
+                  <span className="text-[13px] sm:text-[14px] font-bold text-[#334155] leading-tight">
                     {feature.text}
                   </span>
                 </div>
@@ -86,45 +113,28 @@ export default function DaycareSection() {
             {/* CTA Button */}
             <Link 
               href="/contact" 
-              className="inline-flex items-center gap-2 bg-[#3B82F6] border-2 border-black px-8 py-4 text-[14px] font-black uppercase tracking-widest text-white transition-transform hover:-translate-y-1 hover:-translate-x-1 shadow-[4px_4px_0px_#000000] active:shadow-none active:translate-y-[4px] active:translate-x-[4px]"
+              className="inline-flex items-center gap-2 bg-[#E2324E] px-8 py-4 rounded-full text-[15px] font-bold text-white transition-all duration-300 hover:bg-[#c92a43] hover:-translate-y-1 hover:shadow-lg"
             >
-              Ask About Daycare <ArrowRight className="h-4 w-4 stroke-[3px]" />
+              Ask About Daycare <ArrowRight className="h-5 w-5 stroke-[2.5px]" />
             </Link>
           </motion.div>
 
-          {/* RIGHT SIDE: Image */}
+          {/* RIGHT SIDE: Image Only (Shifted Right) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative h-[350px] sm:h-[450px] lg:h-[500px] w-full border-2 border-black shadow-[8px_8px_0px_#000000] bg-white overflow-hidden group">
+            {/* The translate-x classes push the image to the right on larger screens */}
+            <div className="relative pt-6 -bottom-20 w-full max-w-[800px] lg:translate-x-12 xl:translate-x-20  -z-20">
               <Image
-                src={daycareImage}
+                src={daycareBgIllustration} // Using your imported illustration
                 alt="Children playing in daycare"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="w-full h-auto object-contain drop-shadow-2xl"
+                sizes="(max-width: 1224px) 100vw, 50vw"
+                priority // Good practice if this is above the fold
               />
-              
-              {/* Floating Image Tag (matches screenshot "ALL DAY, EVERY DAY") */}
-              <div className="absolute top-4 left-4 bg-white border-2 border-black px-4 py-2 shadow-[4px_4px_0px_#000000]">
-                <div className="flex items-center gap-2">
-                  <Star className="h-3 w-3 text-[#F29B54] stroke-[3px]" />
-                  <span className="text-[11px] font-black uppercase tracking-widest text-black">
-                    All Day, Every Day
-                  </span>
-                </div>
-              </div>
-
-              {/* Decorative Dot Grid (bottom right corner accent) */}
-              <div className="absolute bottom-4 right-4 grid grid-cols-3 gap-1.5 opacity-80 mix-blend-overlay">
-                {[...Array(9)].map((_, i) => (
-                  <div key={i} className="h-1.5 w-1.5 bg-white rounded-full" />
-                ))}
-              </div>
             </div>
           </motion.div>
 

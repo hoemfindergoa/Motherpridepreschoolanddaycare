@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Clock3, Heart, School, ShieldCheck, Sparkles } from "lucide-react";
-import { Fredoka, Nunito } from "next/font/google";
+import { Fredoka, Nunito } from "next/font/google";import HeroBanner from '@/components/heropreview'
+import ProgramPreview from '@/components/Programpreview'
+import DaycareSection from '@/components/daycarepreview'
+import FaqSection from '@/components/Faqsection'
+
+
 
 import HeroNEW from "@/components/HeroNew";
 import ProgramsSection from "@/components/ProgramsNew";
@@ -145,294 +150,301 @@ const highlights = [
 
 export default function Page() {
   return (
-    <div className={`w-full overflow-x-hidden ${bodyFont.className}`}>
-      <HeroNEW />
-      <ProgramsSection />
+      <div>
+           <HeroBanner />
+      <ProgramPreview />
+      <DaycareSection />
+      <FaqSection/>
 
-      {/* ──────────────────────────────────────────────────────────────
-          SECTION 1 — The MothersPride Feeling
-      ────────────────────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
-        style={{ background: "linear-gradient(160deg,#fffaf7 0%,#fff5ee 100%)" }}
-      >
-        {/* Doodle field */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-8 left-8 rotate-12">         <DoodleHeart size={52} color="#e83d59" opacity={0.45} /></div>
-          <div className="absolute top-6 left-[30%] -rotate-6">    <DoodleStar size={32} color="#f29b54" opacity={0.55} /></div>
-          <div className="absolute top-10 right-[12%]">             <DoodleFlower size={52} color="#e83d59" opacity={0.4} /></div>
-          <div className="absolute top-20 right-[3%]">              <DoodleSpiral size={38} color="#a78bfa" opacity={0.5} /></div>
-          <div className="absolute bottom-28 left-[2%] rotate-6">  <DoodleFlower size={44} color="#60c5a8" opacity={0.38} /></div>
-          <div className="absolute bottom-20 right-[22%]">          <DoodleSquiggle width={88} color="#f29b54" opacity={0.35} /></div>
-          <div className="absolute top-1/2 left-[6%]">              <DoodleDots color="#f29b54" opacity={0.4} /></div>
-          <div className="absolute top-16 left-[54%]">              <DoodleBird size={44} color="#60c5a8" opacity={0.55} /></div>
-          <div className="absolute top-24 left-[60%]">              <DoodleBird size={34} color="#60c5a8" opacity={0.4} /></div>
-        </div>
+      </div>
+    // <div className={`w-full overflow-x-hidden ${bodyFont.className}`}>
+    //   <HeroNEW />
+    //   <ProgramsSection />
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+    //   {/* ──────────────────────────────────────────────────────────────
+    //       SECTION 1 — The MothersPride Feeling
+    //   ────────────────────────────────────────────────────────────── */}
+    //   <section
+    //     className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
+    //     style={{ background: "linear-gradient(160deg,#fffaf7 0%,#fff5ee 100%)" }}
+    //   >
+    //     {/* Doodle field */}
+    //     <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    //       <div className="absolute top-8 left-8 rotate-12">         <DoodleHeart size={52} color="#e83d59" opacity={0.45} /></div>
+    //       <div className="absolute top-6 left-[30%] -rotate-6">    <DoodleStar size={32} color="#f29b54" opacity={0.55} /></div>
+    //       <div className="absolute top-10 right-[12%]">             <DoodleFlower size={52} color="#e83d59" opacity={0.4} /></div>
+    //       <div className="absolute top-20 right-[3%]">              <DoodleSpiral size={38} color="#a78bfa" opacity={0.5} /></div>
+    //       <div className="absolute bottom-28 left-[2%] rotate-6">  <DoodleFlower size={44} color="#60c5a8" opacity={0.38} /></div>
+    //       <div className="absolute bottom-20 right-[22%]">          <DoodleSquiggle width={88} color="#f29b54" opacity={0.35} /></div>
+    //       <div className="absolute top-1/2 left-[6%]">              <DoodleDots color="#f29b54" opacity={0.4} /></div>
+    //       <div className="absolute top-16 left-[54%]">              <DoodleBird size={44} color="#60c5a8" opacity={0.55} /></div>
+    //       <div className="absolute top-24 left-[60%]">              <DoodleBird size={34} color="#60c5a8" opacity={0.4} /></div>
+    //     </div>
 
-          {/* LEFT — copy */}
-          <div className="rounded-[44px] bg-white/70 p-8 shadow-[0_16px_56px_rgba(232,61,89,0.08)] backdrop-blur-sm md:p-12 lg:p-14">
-            <SectionLabel text="The MotherHood Feeling" />
+    //     <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
 
-            <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
-              A warm beginning<br />that already feels<br />
-              <span className="text-[#e83d59]">familiar.</span>
-            </h2>
+    //       {/* LEFT — copy */}
+    //       <div className="rounded-[44px] bg-white/70 p-8 shadow-[0_16px_56px_rgba(232,61,89,0.08)] backdrop-blur-sm md:p-12 lg:p-14">
+    //         <SectionLabel text="The MotherHood Feeling" />
 
-            {/* Pillars — icon + title only, no paragraph copy */}
-            <div className="mt-10 grid grid-cols-3 gap-4">
-              {pillars.map((p) => (
-                <div key={p.title}
-                  className="flex flex-col items-center gap-3 rounded-[28px] bg-white/80 py-6 px-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ background: p.bg, color: p.color }}>
-                    <p.icon className="h-5 w-5" />
-                  </div>
-                  <span className={`text-center text-xl text-slate-800 ${headingFont.className}`}>{p.title}</span>
-                </div>
-              ))}
-            </div>
+    //         <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
+    //           A warm beginning<br />that already feels<br />
+    //           <span className="text-[#e83d59]">familiar.</span>
+    //         </h2>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/about"
-                className="inline-flex items-center gap-2 rounded-full bg-[#e83d59] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(232,61,89,0.35)]">
-                Our Story <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-[#3b6ca8] transition-all hover:-translate-y-1 hover:shadow-md">
-                Book A Visit
-              </Link>
-            </div>
-          </div>
+    //         {/* Pillars — icon + title only, no paragraph copy */}
+    //         <div className="mt-10 grid grid-cols-3 gap-4">
+    //           {pillars.map((p) => (
+    //             <div key={p.title}
+    //               className="flex flex-col items-center gap-3 rounded-[28px] bg-white/80 py-6 px-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+    //               <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ background: p.bg, color: p.color }}>
+    //                 <p.icon className="h-5 w-5" />
+    //               </div>
+    //               <span className={`text-center text-xl text-slate-800 ${headingFont.className}`}>{p.title}</span>
+    //             </div>
+    //           ))}
+    //         </div>
 
-          {/* RIGHT — image */}
-          <div className="relative overflow-hidden rounded-[42px] p-3.5 shadow-[0_28px_80px_rgba(232,61,89,0.12)]"
-            style={{ background: "rgba(255,255,255,0.6)" }}>
-            <div className="relative min-h-[460px] overflow-hidden rounded-[32px]">
-              <Image src={careImage} alt="Motherly care" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-rose-950/25 via-transparent to-rose-100/10" />
-              {/* Floating badge */}
-              <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 shadow-md backdrop-blur-sm">
-                <DoodleHeart size={18} color="#e83d59" opacity={1} />
-                <span className="text-xs font-extrabold uppercase tracking-widest text-[#e83d59]">Gentle Beginnings</span>
-              </div>
-              {/* Doodle overlay */}
-              <div className="absolute right-4 bottom-4 opacity-70">
-                <DoodleFlower size={48} color="#fff" opacity={0.6} />
-              </div>
-            </div>
-          </div>
-        </div>
+    //         <div className="mt-10 flex flex-wrap gap-4">
+    //           <Link href="/about"
+    //             className="inline-flex items-center gap-2 rounded-full bg-[#e83d59] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(232,61,89,0.35)]">
+    //             Our Story <ArrowRight className="h-4 w-4" />
+    //           </Link>
+    //           <Link href="/contact"
+    //             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-[#3b6ca8] transition-all hover:-translate-y-1 hover:shadow-md">
+    //             Book A Visit
+    //           </Link>
+    //         </div>
+    //       </div>
 
-        <WaveBottom fill="#ffe6dd" />
-      </section>
+    //       {/* RIGHT — image */}
+    //       <div className="relative overflow-hidden rounded-[42px] p-3.5 shadow-[0_28px_80px_rgba(232,61,89,0.12)]"
+    //         style={{ background: "rgba(255,255,255,0.6)" }}>
+    //         <div className="relative min-h-[460px] overflow-hidden rounded-[32px]">
+    //           <Image src={careImage} alt="Motherly care" fill className="object-cover" />
+    //           <div className="absolute inset-0 bg-gradient-to-t from-rose-950/25 via-transparent to-rose-100/10" />
+    //           {/* Floating badge */}
+    //           <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 shadow-md backdrop-blur-sm">
+    //             <DoodleHeart size={18} color="#e83d59" opacity={1} />
+    //             <span className="text-xs font-extrabold uppercase tracking-widest text-[#e83d59]">Gentle Beginnings</span>
+    //           </div>
+    //           {/* Doodle overlay */}
+    //           <div className="absolute right-4 bottom-4 opacity-70">
+    //             <DoodleFlower size={48} color="#fff" opacity={0.6} />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
 
-      {/* ──────────────────────────────────────────────────────────────
-          SECTION 2 — Why Parents Stay
-      ────────────────────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
-        style={{ background: "linear-gradient(160deg,#ffe6dd 0%,#ffeedd 100%)" }}
-      >
-        {/* Doodles */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 right-10 -rotate-12">        <DoodleHeart size={50} color="#f29b54" opacity={0.45} /></div>
-          <div className="absolute top-6 right-[30%]">                 <DoodleStar size={28} color="#e83d59" opacity={0.5} /></div>
-          <div className="absolute top-12 left-[6%]">                  <DoodleZigzag width={80} color="#f29b54" opacity={0.45} /></div>
-          <div className="absolute bottom-24 right-[4%] rotate-6">    <DoodleFlower size={46} color="#f29b54" opacity={0.38} /></div>
-          <div className="absolute bottom-16 left-[20%]">              <DoodleDots color="#e83d59" opacity={0.35} /></div>
-          <div className="absolute top-1/3 right-[8%]">                <DoodleSpiral size={40} color="#e83d59" opacity={0.4} /></div>
-          <div className="absolute top-20 left-[44%]">                 <DoodleBird size={40} color="#f29b54" opacity={0.5} /></div>
-        </div>
+    //     <WaveBottom fill="#ffe6dd" />
+    //   </section>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+    //   {/* ──────────────────────────────────────────────────────────────
+    //       SECTION 2 — Why Parents Stay
+    //   ────────────────────────────────────────────────────────────── */}
+    //   <section
+    //     className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
+    //     style={{ background: "linear-gradient(160deg,#ffe6dd 0%,#ffeedd 100%)" }}
+    //   >
+    //     {/* Doodles */}
+    //     <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    //       <div className="absolute top-10 right-10 -rotate-12">        <DoodleHeart size={50} color="#f29b54" opacity={0.45} /></div>
+    //       <div className="absolute top-6 right-[30%]">                 <DoodleStar size={28} color="#e83d59" opacity={0.5} /></div>
+    //       <div className="absolute top-12 left-[6%]">                  <DoodleZigzag width={80} color="#f29b54" opacity={0.45} /></div>
+    //       <div className="absolute bottom-24 right-[4%] rotate-6">    <DoodleFlower size={46} color="#f29b54" opacity={0.38} /></div>
+    //       <div className="absolute bottom-16 left-[20%]">              <DoodleDots color="#e83d59" opacity={0.35} /></div>
+    //       <div className="absolute top-1/3 right-[8%]">                <DoodleSpiral size={40} color="#e83d59" opacity={0.4} /></div>
+    //       <div className="absolute top-20 left-[44%]">                 <DoodleBird size={40} color="#f29b54" opacity={0.5} /></div>
+    //     </div>
 
-          {/* LEFT — image */}
-          <div className="relative min-h-[460px] overflow-hidden rounded-[42px] shadow-[0_24px_72px_rgba(242,155,84,0.15)]">
-            <Image src={familyImage} alt="Happy family" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-amber-950/20 via-transparent to-white/8" />
-            {/* Stat chips */}
+    //     <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+
+    //       {/* LEFT — image */}
+    //       <div className="relative min-h-[460px] overflow-hidden rounded-[42px] shadow-[0_24px_72px_rgba(242,155,84,0.15)]">
+    //         <Image src={familyImage} alt="Happy family" fill className="object-cover" />
+    //         <div className="absolute inset-0 bg-gradient-to-t from-amber-950/20 via-transparent to-white/8" />
+    //         {/* Stat chips */}
            
-            {/* Corner doodle */}
-            <div className="absolute right-5 top-5 opacity-75">
-              <DoodleStar size={30} color="#fff" opacity={0.8} />
-            </div>
-          </div>
+    //         {/* Corner doodle */}
+    //         <div className="absolute right-5 top-5 opacity-75">
+    //           <DoodleStar size={30} color="#fff" opacity={0.8} />
+    //         </div>
+    //       </div>
 
-          {/* RIGHT — copy */}
-          <div className="rounded-[44px] bg-white/68 p-8 shadow-[0_16px_56px_rgba(242,155,84,0.1)] backdrop-blur-sm md:p-12 lg:p-14">
-            <SectionLabel text="Why Parents Stay" color="#f29b54" />
-            <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
-              They feel
-              <span className="text-[#f29b54]"> peace of mind.</span>
-            </h2>
+    //       {/* RIGHT — copy */}
+    //       <div className="rounded-[44px] bg-white/68 p-8 shadow-[0_16px_56px_rgba(242,155,84,0.1)] backdrop-blur-sm md:p-12 lg:p-14">
+    //         <SectionLabel text="Why Parents Stay" color="#f29b54" />
+    //         <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
+    //           They feel
+    //           <span className="text-[#f29b54]"> peace of mind.</span>
+    //         </h2>
 
-            <div className="mt-10 flex flex-col gap-4">
-              {highlights.map((item) => (
-                <div key={item.title}
-                  className="flex items-center gap-4 rounded-[24px] bg-white/80 px-5 py-4 shadow-[0_6px_20px_rgba(15,23,42,0.05)]">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl" style={{ background: item.bg, color: item.color }}>
-                    <item.icon className="h-5 w-5" />
-                  </div>
-                  <span className={`text-xl text-slate-800 ${headingFont.className}`}>{item.title}</span>
-                  <div className="ml-auto opacity-60">
-                    <DoodleSquiggle width={32} color={item.color} opacity={0.8} />
-                  </div>
-                </div>
-              ))}
-            </div>
+    //         <div className="mt-10 flex flex-col gap-4">
+    //           {highlights.map((item) => (
+    //             <div key={item.title}
+    //               className="flex items-center gap-4 rounded-[24px] bg-white/80 px-5 py-4 shadow-[0_6px_20px_rgba(15,23,42,0.05)]">
+    //               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl" style={{ background: item.bg, color: item.color }}>
+    //                 <item.icon className="h-5 w-5" />
+    //               </div>
+    //               <span className={`text-xl text-slate-800 ${headingFont.className}`}>{item.title}</span>
+    //               <div className="ml-auto opacity-60">
+    //                 <DoodleSquiggle width={32} color={item.color} opacity={0.8} />
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
 
       
-          </div>
-        </div>
+    //       </div>
+    //     </div>
 
-        <WaveBottom fill="#edf5ff" />
-      </section>
+    //     <WaveBottom fill="#edf5ff" />
+    //   </section>
 
-      {/* ──────────────────────────────────────────────────────────────
-          SECTION 3 — Daycare With Heart
-      ────────────────────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
-        style={{ background: "linear-gradient(160deg,#edf5ff 0%,#deeeff 100%)" }}
-      >
-        {/* Doodles */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-8 left-8 rotate-6">          <DoodleFlower size={50} color="#3b6ca8" opacity={0.38} /></div>
-          <div className="absolute top-6 left-[35%]">               <DoodleStar size={30} color="#a78bfa" opacity={0.55} /></div>
-          <div className="absolute top-10 right-[10%] -rotate-10">  <DoodleHeart size={46} color="#3b6ca8" opacity={0.4} /></div>
-          <div className="absolute top-24 right-[3%]">              <DoodleDots color="#3b6ca8" opacity={0.35} /></div>
-          <div className="absolute bottom-24 left-[4%] -rotate-6">  <DoodleSpiral size={42} color="#a78bfa" opacity={0.45} /></div>
-          <div className="absolute bottom-16 right-[16%]">           <DoodleZigzag width={90} color="#3b6ca8" opacity={0.3} /></div>
-          <div className="absolute top-1/2 right-[38%]">             <DoodleBird size={44} color="#3b6ca8" opacity={0.45} /></div>
-          <div className="absolute top-16 left-[58%]">               <DoodleBird size={32} color="#a78bfa" opacity={0.45} /></div>
-        </div>
+    //   {/* ──────────────────────────────────────────────────────────────
+    //       SECTION 3 — Daycare With Heart
+    //   ────────────────────────────────────────────────────────────── */}
+    //   <section
+    //     className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
+    //     style={{ background: "linear-gradient(160deg,#edf5ff 0%,#deeeff 100%)" }}
+    //   >
+    //     {/* Doodles */}
+    //     <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    //       <div className="absolute top-8 left-8 rotate-6">          <DoodleFlower size={50} color="#3b6ca8" opacity={0.38} /></div>
+    //       <div className="absolute top-6 left-[35%]">               <DoodleStar size={30} color="#a78bfa" opacity={0.55} /></div>
+    //       <div className="absolute top-10 right-[10%] -rotate-10">  <DoodleHeart size={46} color="#3b6ca8" opacity={0.4} /></div>
+    //       <div className="absolute top-24 right-[3%]">              <DoodleDots color="#3b6ca8" opacity={0.35} /></div>
+    //       <div className="absolute bottom-24 left-[4%] -rotate-6">  <DoodleSpiral size={42} color="#a78bfa" opacity={0.45} /></div>
+    //       <div className="absolute bottom-16 right-[16%]">           <DoodleZigzag width={90} color="#3b6ca8" opacity={0.3} /></div>
+    //       <div className="absolute top-1/2 right-[38%]">             <DoodleBird size={44} color="#3b6ca8" opacity={0.45} /></div>
+    //       <div className="absolute top-16 left-[58%]">               <DoodleBird size={32} color="#a78bfa" opacity={0.45} /></div>
+    //     </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+    //     <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
 
-          {/* LEFT — copy */}
-          <div className="rounded-[44px] bg-white/68 p-8 shadow-[0_16px_56px_rgba(59,108,168,0.1)] backdrop-blur-sm md:p-12 lg:p-14">
-            <SectionLabel text="Daycare With Heart" color="#3b6ca8" />
-            <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
-              A soft extension<br />
-              <span className="text-[#3b6ca8]">of home.</span>
-            </h2>
+    //       {/* LEFT — copy */}
+    //       <div className="rounded-[44px] bg-white/68 p-8 shadow-[0_16px_56px_rgba(59,108,168,0.1)] backdrop-blur-sm md:p-12 lg:p-14">
+    //         <SectionLabel text="Daycare With Heart" color="#3b6ca8" />
+    //         <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
+    //           A soft extension<br />
+    //           <span className="text-[#3b6ca8]">of home.</span>
+    //         </h2>
 
-            {/* Tags — visual, no body copy */}
-            <div className="mt-10 flex flex-wrap gap-3">
-              {[
-                { label: "Safe supervision", doodle: <DoodleHeart size={16} color="#e83d59" opacity={1} /> },
-                { label: "Comforting routine", doodle: <DoodleStar size={16} color="#f29b54" opacity={1} /> },
-                { label: "Play & rest", doodle: <DoodleFlower size={16} color="#60c5a8" opacity={1} /> },
-                { label: "Parent peace of mind", doodle: <DoodleSpiral size={16} color="#a78bfa" opacity={1} /> },
-              ].map(({ label, doodle }) => (
-                <span key={label}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2.5 text-sm font-bold text-slate-700 shadow-[0_4px_14px_rgba(59,108,168,0.1)]">
-                  {doodle} {label}
-                </span>
-              ))}
-            </div>
+    //         {/* Tags — visual, no body copy */}
+    //         <div className="mt-10 flex flex-wrap gap-3">
+    //           {[
+    //             { label: "Safe supervision", doodle: <DoodleHeart size={16} color="#e83d59" opacity={1} /> },
+    //             { label: "Comforting routine", doodle: <DoodleStar size={16} color="#f29b54" opacity={1} /> },
+    //             { label: "Play & rest", doodle: <DoodleFlower size={16} color="#60c5a8" opacity={1} /> },
+    //             { label: "Parent peace of mind", doodle: <DoodleSpiral size={16} color="#a78bfa" opacity={1} /> },
+    //           ].map(({ label, doodle }) => (
+    //             <span key={label}
+    //               className="inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2.5 text-sm font-bold text-slate-700 shadow-[0_4px_14px_rgba(59,108,168,0.1)]">
+    //               {doodle} {label}
+    //             </span>
+    //           ))}
+    //         </div>
 
-            <div className="mt-10">
-              <Link href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#3b6ca8] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(59,108,168,0.38)]">
-                Ask About Daycare <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+    //         <div className="mt-10">
+    //           <Link href="/contact"
+    //             className="inline-flex items-center gap-2 rounded-full bg-[#3b6ca8] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(59,108,168,0.38)]">
+    //             Ask About Daycare <ArrowRight className="h-4 w-4" />
+    //           </Link>
+    //         </div>
+    //       </div>
 
-          {/* RIGHT — image */}
-          <div className="relative overflow-hidden rounded-[42px] p-3.5 shadow-[0_28px_80px_rgba(59,108,168,0.14)]"
-            style={{ background: "rgba(255,255,255,0.6)" }}>
-            <div className="relative min-h-[460px] overflow-hidden rounded-[32px]">
-              <Image src={daycareImage} alt="Daycare children playing" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/30 via-transparent to-transparent" />
-              {/* Floating badge */}
-              <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 shadow-md backdrop-blur-sm">
-                <DoodleFlower size={18} color="#3b6ca8" opacity={1} />
-                <span className="text-xs font-extrabold uppercase tracking-widest text-[#3b6ca8]">All Day, Every Day</span>
-              </div>
-              <div className="absolute right-4 bottom-4 opacity-65">
-                <DoodleDots color="#fff" opacity={0.7} />
-              </div>
-            </div>
-          </div>
-        </div>
+    //       {/* RIGHT — image */}
+    //       <div className="relative overflow-hidden rounded-[42px] p-3.5 shadow-[0_28px_80px_rgba(59,108,168,0.14)]"
+    //         style={{ background: "rgba(255,255,255,0.6)" }}>
+    //         <div className="relative min-h-[460px] overflow-hidden rounded-[32px]">
+    //           <Image src={daycareImage} alt="Daycare children playing" fill className="object-cover" />
+    //           <div className="absolute inset-0 bg-gradient-to-t from-blue-950/30 via-transparent to-transparent" />
+    //           {/* Floating badge */}
+    //           <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 shadow-md backdrop-blur-sm">
+    //             <DoodleFlower size={18} color="#3b6ca8" opacity={1} />
+    //             <span className="text-xs font-extrabold uppercase tracking-widest text-[#3b6ca8]">All Day, Every Day</span>
+    //           </div>
+    //           <div className="absolute right-4 bottom-4 opacity-65">
+    //             <DoodleDots color="#fff" opacity={0.7} />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
 
-        <WaveBottom fill="#fff8f3" />
-      </section>
+    //     <WaveBottom fill="#fff8f3" />
+    //   </section>
 
-      {/* ──────────────────────────────────────────────────────────────
-          SECTION 4 — CTA / Final
-      ────────────────────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
-        style={{ background: "linear-gradient(160deg,#fff8f3 0%,#fff4ee 100%)" }}
-      >
-        {/* Doodles */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-6 left-10 rotate-10">          <DoodleHeart size={50} color="#e83d59" opacity={0.4} /></div>
-          <div className="absolute top-8 left-[40%]">                 <DoodleStar size={34} color="#f29b54" opacity={0.5} /></div>
-          <div className="absolute top-10 right-[8%] -rotate-8">     <DoodleFlower size={50} color="#a78bfa" opacity={0.38} /></div>
-          <div className="absolute top-24 right-[2%]">                <DoodleSpiral size={38} color="#e83d59" opacity={0.4} /></div>
-          <div className="absolute bottom-20 left-[5%] rotate-6">    <DoodleDots color="#f29b54" opacity={0.4} /></div>
-          <div className="absolute bottom-16 right-[20%]">            <DoodleSquiggle width={90} color="#a78bfa" opacity={0.35} /></div>
-          <div className="absolute bottom-12 right-[3%] -rotate-6">  <DoodleHeart size={40} color="#60c5a8" opacity={0.4} /></div>
-          <div className="absolute top-16 left-[55%]">                <DoodleBird size={44} color="#e83d59" opacity={0.45} /></div>
-          <div className="absolute top-28 left-[62%]">                <DoodleBird size={32} color="#f29b54" opacity={0.4} /></div>
-        </div>
+    //   {/* ──────────────────────────────────────────────────────────────
+    //       SECTION 4 — CTA / Final
+    //   ────────────────────────────────────────────────────────────── */}
+    //   <section
+    //     className="relative overflow-hidden px-6 py-28 md:px-10 lg:px-16"
+    //     style={{ background: "linear-gradient(160deg,#fff8f3 0%,#fff4ee 100%)" }}
+    //   >
+    //     {/* Doodles */}
+    //     <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    //       <div className="absolute top-6 left-10 rotate-10">          <DoodleHeart size={50} color="#e83d59" opacity={0.4} /></div>
+    //       <div className="absolute top-8 left-[40%]">                 <DoodleStar size={34} color="#f29b54" opacity={0.5} /></div>
+    //       <div className="absolute top-10 right-[8%] -rotate-8">     <DoodleFlower size={50} color="#a78bfa" opacity={0.38} /></div>
+    //       <div className="absolute top-24 right-[2%]">                <DoodleSpiral size={38} color="#e83d59" opacity={0.4} /></div>
+    //       <div className="absolute bottom-20 left-[5%] rotate-6">    <DoodleDots color="#f29b54" opacity={0.4} /></div>
+    //       <div className="absolute bottom-16 right-[20%]">            <DoodleSquiggle width={90} color="#a78bfa" opacity={0.35} /></div>
+    //       <div className="absolute bottom-12 right-[3%] -rotate-6">  <DoodleHeart size={40} color="#60c5a8" opacity={0.4} /></div>
+    //       <div className="absolute top-16 left-[55%]">                <DoodleBird size={44} color="#e83d59" opacity={0.45} /></div>
+    //       <div className="absolute top-28 left-[62%]">                <DoodleBird size={32} color="#f29b54" opacity={0.4} /></div>
+    //     </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+    //     <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
 
-          {/* LEFT — copy */}
-          <div className="rounded-[44px] bg-white/70 p-8 shadow-[0_16px_56px_rgba(232,61,89,0.07)] backdrop-blur-sm md:p-12 lg:p-14">
-            <SectionLabel text="Ready to Begin?" color="#e83d59" />
-            <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
-              Every journey starts<br />with a
-              <span className="text-[#e83d59]"> warm hello.</span>
-            </h2>
+    //       {/* LEFT — copy */}
+    //       <div className="rounded-[44px] bg-white/70 p-8 shadow-[0_16px_56px_rgba(232,61,89,0.07)] backdrop-blur-sm md:p-12 lg:p-14">
+    //         <SectionLabel text="Ready to Begin?" color="#e83d59" />
+    //         <h2 className={`text-5xl leading-tight text-slate-800 md:text-6xl ${headingFont.className}`}>
+    //           Every journey starts<br />with a
+    //           <span className="text-[#e83d59]"> warm hello.</span>
+    //         </h2>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/Whyus"
-                className="inline-flex items-center gap-2 rounded-full bg-[#3b6ca8] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(59,108,168,0.35)]">
-                Why Us <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link href="/admission"
-                className="inline-flex items-center gap-2 rounded-full bg-[#e83d59] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(232,61,89,0.35)]">
-                Start Admission <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+    //         <div className="mt-10 flex flex-wrap gap-4">
+    //           <Link href="/Whyus"
+    //             className="inline-flex items-center gap-2 rounded-full bg-[#3b6ca8] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(59,108,168,0.35)]">
+    //             Why Us <ArrowRight className="h-4 w-4" />
+    //           </Link>
+    //           <Link href="/admission"
+    //             className="inline-flex items-center gap-2 rounded-full bg-[#e83d59] px-7 py-3.5 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(232,61,89,0.35)]">
+    //             Start Admission <ArrowRight className="h-4 w-4" />
+    //           </Link>
+    //         </div>
 
-            {/* Decorative doodle row */}
-            <div className="mt-8 flex items-center gap-2 opacity-60">
-              <DoodleHeart size={20} color="#e83d59" opacity={1} />
-              <DoodleSquiggle width={48} color="#f29b54" opacity={0.9} />
-              <DoodleFlower size={20} color="#60c5a8" opacity={1} />
-              <DoodleSquiggle width={48} color="#a78bfa" opacity={0.9} />
-              <DoodleStar size={20} color="#3b6ca8" opacity={1} />
-            </div>
-          </div>
+    //         {/* Decorative doodle row */}
+    //         <div className="mt-8 flex items-center gap-2 opacity-60">
+    //           <DoodleHeart size={20} color="#e83d59" opacity={1} />
+    //           <DoodleSquiggle width={48} color="#f29b54" opacity={0.9} />
+    //           <DoodleFlower size={20} color="#60c5a8" opacity={1} />
+    //           <DoodleSquiggle width={48} color="#a78bfa" opacity={0.9} />
+    //           <DoodleStar size={20} color="#3b6ca8" opacity={1} />
+    //         </div>
+    //       </div>
 
-          {/* RIGHT — image */}
-          <div className="relative min-h-[460px] overflow-hidden rounded-[42px] shadow-[0_24px_72px_rgba(15,23,42,0.12)]">
-            <Image src={teacherImage} alt="Teacher and children" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-transparent to-white/5" />
-            {/* Caption card */}
-            <div className="absolute bottom-5 left-5 right-5 rounded-[24px] bg-white/80 px-5 py-4 backdrop-blur-md shadow-lg">
-              <div className="flex items-center gap-3">
-                <DoodleHeart size={22} color="#e83d59" opacity={1} />
-                <p className={`text-xl text-slate-800 ${headingFont.className}`}>
-                  Calm. Clear. Parent-friendly.
-                </p>
-              </div>
-            </div>
-            {/* Corner doodle */}
-            <div className="absolute right-5 top-5">
-              <DoodleFlower size={42} color="#fff" opacity={0.5} />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    //       {/* RIGHT — image */}
+    //       <div className="relative min-h-[460px] overflow-hidden rounded-[42px] shadow-[0_24px_72px_rgba(15,23,42,0.12)]">
+    //         <Image src={teacherImage} alt="Teacher and children" fill className="object-cover" />
+    //         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-transparent to-white/5" />
+    //         {/* Caption card */}
+    //         <div className="absolute bottom-5 left-5 right-5 rounded-[24px] bg-white/80 px-5 py-4 backdrop-blur-md shadow-lg">
+    //           <div className="flex items-center gap-3">
+    //             <DoodleHeart size={22} color="#e83d59" opacity={1} />
+    //             <p className={`text-xl text-slate-800 ${headingFont.className}`}>
+    //               Calm. Clear. Parent-friendly.
+    //             </p>
+    //           </div>
+    //         </div>
+    //         {/* Corner doodle */}
+    //         <div className="absolute right-5 top-5">
+    //           <DoodleFlower size={42} color="#fff" opacity={0.5} />
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </section>
+    // </div>
   );
 }

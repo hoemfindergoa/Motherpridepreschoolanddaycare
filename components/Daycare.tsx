@@ -82,7 +82,7 @@ const DayCareHero = () => {
                 HOME AWAY
               </span>
               <span 
-                className="block text-5xl md:text-7xl lg:text-8xl mt-2 relative inline-block"
+                className="block text-5xl md:text-7xl lg:text-8xl mt-2 relative"
                 style={{
                   background: "linear-gradient(135deg, #E83D59, #F97316, #E83D59)",
                   WebkitBackgroundClip: "text",

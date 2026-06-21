@@ -4,181 +4,127 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Youtube, Phone, Mail, MapPin } from "lucide-react";
-import { Space_Mono } from "next/font/google";
+import { Facebook, Instagram, Youtube, Phone, Mail, MapPin, Heart } from "lucide-react";
 
 import logo from "../public/logo.png";
-// IMPORTANT: Update this path to your actual big footer image
-import footerBigImage from "@/public/compressed/footermother.jpg.png";
 
-// Using Space Mono to match the brutalist/typewriter aesthetic
-const spaceMono = Space_Mono({ 
-  subsets: ["latin"], 
-  weight: ["400", "700"] 
-});
+// Playful Assets
+import sun from "@/public/websiteassest/sun.png";
+import cloud from "@/public/websiteassest/cloud.png";
+import balloon from "@/public/websiteassest/baloon.png";
+import motherChildBottom from "@/public/websiteassest/motherdaughter.png"; 
 
 const quickLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "Programs", href: "/Programs" },
-  { label: "Admissions", href: "/admission" },
-  { label: "Our Centers", href: "/Ourcenters" },
-  { label: "Contact", href: "/contact" },
-
+  { label: "About Us", href: "/about", color: "#F29B54" },
+  { label: "Programs", href: "/Programs", color: "#75C05B" },
+  { label: "Admissions", href: "/admission", color: "#E2324E" },
+  { label: "Our Centers", href: "/Ourcenters", color: "#A275E1" },
+  { label: "Contact", href: "/contact", color: "#3B82F6" },
 ];
 
-
-/* ═════════ CUSTOM SVG SHAPES ═════════ */
-
-// A playful, hollow bubble with a highlight shine
-const CustomBubble = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2.5" fill="currentColor" fillOpacity="0.15" />
-    {/* Shine effect */}
-    <path d="M6.5 9C6.5 7.61929 7.61929 6.5 9 6.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-  </svg>
-);
-
-// A brutalist-style 4-point star/sparkle
-const CustomStar = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path 
-      d="M12 2C12 2 12 10 20 12C12 14 12 22 12 22C12 22 12 14 4 12C12 10 12 2 12 2Z" 
-      fill="currentColor" 
-      fillOpacity="0.8" 
-      stroke="currentColor" 
-      strokeWidth="1.5" 
-      strokeLinejoin="round" 
-    />
-  </svg>
-);
-
-/* ═════════ ANIMATED BACKGROUND COMPONENT ═════════ */
-
-const AnimatedBackground = () => {
+export default function Footer() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  
+
   if (!mounted) return null;
 
-  // Theme colors to make the background pop
-  const themeColors = ["text-[#DA5396]", "text-[#75C05B]", "text-[#F29B54]", "text-[#A275E1]", "text-[#E2324E]"];
-
-  // Generate random starting points, speeds, and colors
-  // Increased length to 24 because they are smaller now
-  const elements = Array.from({ length: 24 }).map((_, i) => {
-    const isStar = i % 2 === 0;
-    const leftPos = Math.random() * 100; // random left %
-    
-    // SMALLER SIZES: Much smaller than before
-    const sizeClass = isStar ? "w-3 h-3 sm:w-4 sm:h-4" : "w-4 h-4 sm:w-5 sm:h-5";
-    const colorClass = themeColors[Math.floor(Math.random() * themeColors.length)];
-    
-    return {
-      id: i,
-      isStar,
-      left: `${leftPos}%`,
-      duration: 20 + Math.random() * 20, // 20s to 40s super smooth, slow fall
-      delay: Math.random() * 15,
-      rotation: isStar ? (Math.random() > 0.5 ? 360 : -360) : 0, // Stars rotate randomly
-      className: `absolute ${sizeClass} ${colorClass} drop-shadow-sm`
-    };
-  });
-
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-60">
-      {elements.map((el) => (
-        <motion.div
-          key={el.id}
-          // Animating 'y' instead of 'top' ensures hardware-accelerated, buttery smooth movement
-          initial={{ y: "-10vh", opacity: 0 }}
-          animate={{ 
-            y: "110vh", 
-            opacity: [0, 1, 1, 0],
-            rotate: el.rotation ? [0, el.rotation] : 0 
-          }}
-          transition={{ 
-            duration: el.duration, 
-            delay: el.delay, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          className={el.className}
-          // We set 'left' statically so it falls straight down perfectly
-          style={{ left: el.left }}
+    <footer className="relative w-full bg-sky-50 pt-32 pb-6 overflow-hidden font-sans">
+      
+      {/* ── TOP LAYERED CLOUD WAVE ── */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        <svg
+          className="relative block w-[calc(100%+1.3px)] h-[80px] sm:h-[120px]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
         >
-          {el.isStar ? <CustomStar /> : <CustomBubble />}
-        </motion.div>
-      ))}
-    </div>
-  );
-};
-
-
-
-
-// A playful, hollow bubble with a highlight shine
-
-
-/* ═════════ MAIN FOOTER ═════════ */
-export default function Footer() {
-  return (
-    <footer
-      className={`relative w-full bg-[#F7F5E5] md:py-[70px] border-t-[4px] border-black overflow-hidden pt-10 sm:pt-14 font-fedorikamedium`}
-    >
-      <AnimatedBackground />
-
-      {/* ── BACKGROUND IMAGE (Right Side) ── */}
-      <div className="md:absolute  inset-y-0 right-0 z-0 w-full md:w-2/3 lg:w-1/2 pointer-events-none opacity-25 lg:opacity-40">
-        <div 
-          className="relative w-full h-full"
-          // This mask fades the image out towards the left so text stays readable
-          style={{ maskImage: "linear-gradient(to right, transparent, black 40%)", WebkitMaskImage: "linear-gradient(to right, transparent, black 40%)" }}
-        >
-          <Image
-            src={footerBigImage}
-            alt="Background"
-            fill
-            className="object-cover object-right"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </div>
+          <path
+            d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,80C672,85,768,75,864,64C960,53,1056,43,1152,48C1248,53,1344,75,1392,85.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+            className="fill-purple-400"
+          ></path>
+        </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-[66px]">
+      {/* ── FLOATING PLAYFUL ASSETS (The Sky Background) ── */}
+      
+      {/* Sun */}
+      <motion.div 
+        animate={{ rotate: 360 }} 
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[10%] left-[5%] z-0 w-[120px] sm:w-[150px] opacity-90"
+      >
+        <Image src={sun} alt="Sun" className="w-full h-auto drop-shadow-lg" />
+      </motion.div>
+
+      {/* Floating Clouds */}
+      <motion.div 
+        animate={{ x: [0, 20, 0] }} 
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] left-[10%] z-0 w-[140px] sm:w-[180px] opacity-80"
+      >
+        <Image src={cloud} alt="Cloud" className="w-full h-auto" />
+      </motion.div>
+      <motion.div 
+        animate={{ x: [0, -15, 0] }} 
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[30%] left-[4%] z-0 w-[160px] sm:w-[220px] opacity-70"
+      >
+        <Image src={cloud} alt="Cloud" className="w-full h-auto" />
+      </motion.div>
+
+      {/* Hot Air Balloon */}
+      <motion.div 
+        animate={{ y: [0, -20, 0] }} 
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] left-[8%] md:left-[90%] z-0 w-[90px] sm:w-[120px] opacity-90"
+      >
+        <Image src={balloon} alt="Balloon" className="w-full h-auto drop-shadow-md" />
+      </motion.div>
+
+      {/* ── MOTHER & CHILD IMAGE (Bottom Right) ── */}
+      <div className="absolute bottom-0 right-[-5%] md:right-[2%] z-0 w-[220px] sm:w-[350px] md:w-[450px] opacity-80 md:opacity-100 pointer-events-none">
+        <Image
+          src={motherChildBottom}
+          alt="Mother and Child"
+          className="w-full h-auto object-contain object-bottom drop-shadow-2xl"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      </div>
+
+      {/* ── MAIN CONTENT (Wrapped in relative z-10 so it sits above the background) ── */}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mt-[10px]">
         
-        {/* Main Footer Row (Grid Layout: 3 Columns on Desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1.5fr] gap-8 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1.5fr] gap-8 pb-16">
           
           {/* COLUMN 1: Brand & Socials */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-5"
           >
-            <div className="inline-flex items-center bg-white border-[2.5px] border-black p-2 rounded-[4px] shadow-[3px_3px_0px_#000000] w-fit">
-              <Image src={logo} alt="MotherHood" className="h-10 w-auto object-contain" />
+            <div className=" mt-[80px] p-3  w-fit">
+              <Image src={logo} alt="MotherHood" className="h-12 w-auto object-contain" />
             </div>
-            
-            <h2 className="text-[20px] sm:text-[24px] font-bold text-black leading-tight tracking-tight max-w-[280px]">
-              Where every child feels at home. 🧸
-            </h2>
 
-            <div className="mt-2 flex gap-3">
+            <div className="flex gap-4 mt-2">
               {[
-                { icon: Facebook, href: "#", bg: "#E2324E" },
-                { icon: Instagram, href: "#", bg: "#75C05B" },
-                { icon: Youtube, href: "#", bg: "#F29B54" },
-              ].map(({ icon: Icon, href, bg }, i) => (
+                { icon: Facebook, href: "#", color: "#3B5998" },
+                { icon: Instagram, href: "#", color: "#E1306C" },
+                { icon: Youtube, href: "#", color: "#FF0000" },
+              ].map(({ icon: Icon, href, color }, i) => (
                 <motion.a
                   key={i}
                   href={href}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-[4px] border-[2.5px] border-black text-black transition-all hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none active:translate-y-[4px] active:translate-x-[4px]"
-                  style={{ backgroundColor: bg, boxShadow: "3px 3px 0px #000000" }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md text-slate-500 transition-colors hover:text-white"
+                  style={{ '--hover-color': color } as React.CSSProperties}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = color)}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}
                 >
-                  <Icon className="h-5 w-5 stroke-[2.5px]" />
+                  <Icon className="h-6 w-6 stroke-[2px]" />
                 </motion.a>
               ))}
             </div>
@@ -190,18 +136,23 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
+            className="w-full mt-8 md:mt-[80px]"
           >
-            <h3 className="text-white bg-black inline-block px-2.5 py-1 text-[14px] font-bold uppercase tracking-widest border-[2px] border-black mb-4 shadow-[2px_2px_0px_rgba(0,0,0,0.3)]">
-              Explore
+            <h3 className="text-slate-900 text-[18px] font-black uppercase tracking-widest mb-6 flex items-center gap-2">
+              <Heart className="h-5 w-5 text-[#E2324E] fill-[#E2324E]" /> Explore
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-4 font-fedorikanew">
               {quickLinks.map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="group flex items-center gap-2.5 text-[15px] font-bold text-black hover:text-[#E2324E] transition-colors"
+                    className="group flex items-center gap-4 text-[16px] font-extrabold transition-all duration-300 hover:translate-x-2"
+                    style={{ color: item.color }}
                   >
-                    <span className="h-2.5 w-2.5 border-[2px] border-black bg-[#F29B54] group-hover:bg-[#E2324E] transition-colors" />
+                    <span 
+                      className="h-2 w-2 rounded-full shadow-sm transition-transform duration-300 group-hover:scale-150" 
+                      style={{ backgroundColor: item.color }}
+                    />
                     {item.label}
                   </Link>
                 </li>
@@ -215,25 +166,26 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
+            className="w-full mt-8 md:mt-[80px]"
           >
-            <h3 className="text-white bg-black inline-block px-2.5 py-1 text-[14px] font-bold uppercase tracking-widest border-[2px] border-black mb-4 shadow-[2px_2px_0px_rgba(0,0,0,0.3)]">
-              Say Hello
+            <h3 className="text-slate-900 text-[18px] font-black uppercase tracking-widest mb-6 flex items-center gap-2">
+              Say Hello 👋
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {[
-                { icon: Phone, label: "+91 9999606090", bg: "#DA5396" },
-                { icon: Mail, label: "info@motherhoodpreschoolanddaycare.com", bg: "#A275E1" },
-                { icon: MapPin, label: "Janakpuri, Delhi", bg: "#75C05B" },
-              ].map(({ icon: Icon, label, bg }, i) => (
+                { icon: Phone, label: "+91 9999606090", bg: "#FEF4EB", color: "#F29B54" },
+                { icon: Mail, label: "info@motherhoodpreschool.com", bg: "#F5F1FC", color: "#A275E1" },
+                { icon: MapPin, label: "Janakpuri, Delhi", bg: "#F1F9EE", color: "#75C05B" },
+              ].map(({ icon: Icon, label, bg, color }, i) => (
                 <li key={i}>
-                  <div className="flex items-center gap-3 bg-white border-[2.5px] border-black rounded-[4px] p-2 shadow-[3px_3px_0px_#000000] hover:-translate-y-[2px] transition-transform w-fit">
+                  <div className="flex items-center gap-4 group w-full cursor-default">
                     <span 
-                      className="flex h-8 w-8 shrink-0 items-center justify-center border-[2px] border-black rounded-[3px]" 
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:shadow-md" 
                       style={{ backgroundColor: bg }}
                     >
-                      <Icon className="h-4 w-4 text-black stroke-[2.5px]" />
+                      <Icon className="h-5 w-5" style={{ color: color }} />
                     </span>
-                    <span className="text-[13px] sm:text-[14px] font-bold text-black leading-tight break-all">
+                    <span className="text-[16px] font-extrabold text-slate-700 group-hover:text-slate-900 transition-colors leading-tight break-all">
                       {label}
                     </span>
                   </div>
@@ -244,9 +196,9 @@ export default function Footer() {
 
         </div>
 
-        {/* BOTTOM BAR */}
-        <div className="border-t-[3px] border-black py-4 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-[13px] sm:text-[14px] font-bold text-black text-center md:text-left">
+        {/* ── BOTTOM BAR ── */}
+        <div className="relative z-10 border-t-[2px] border-sky-200/60 py-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-t-3xl">
+          <p className="text-[14px] font-bold text-slate-600 text-center md:text-left">
             © 2026 MotherHood Preschool. All rights reserved. <br className="sm:hidden" />
             <span className="inline-block mt-2 sm:mt-0 sm:ml-2">
               Made with 💖 by{" "}
@@ -254,16 +206,16 @@ export default function Footer() {
                 href="https://saasscale.in/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-[#E2324E] text-white px-2 py-[1px] border-[2px] border-black hover:bg-black hover:text-white transition-colors ml-1"
+                className="text-[#E2324E] hover:text-[#c92a43] transition-colors"
               >
                 Scale saas
               </Link>
             </span>
           </p>
           
-          <div className="flex gap-4 sm:gap-6 text-[13px] sm:text-[14px] font-bold text-black">
-            <Link href="/privacy" className="underline decoration-2 underline-offset-4 hover:text-[#E2324E] transition-colors">Privacy</Link>
-            <Link href="/privacy" className="underline decoration-2 underline-offset-4 hover:text-[#E2324E] transition-colors">Terms</Link>
+          <div className="flex gap-6 text-[14px] font-bold text-slate-600">
+            <Link href="/privacy" className="hover:text-[#E2324E] transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-[#E2324E] transition-colors">Terms of Service</Link>
           </div>
         </div>
 
