@@ -23,7 +23,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "/about", label: "About Us" },
     { href: "/Programs", label: "Programs" },
-    { href: "/why-us", label: "Why Us" },
+    { href: "/Whyus", label: "Why Us" },
     { href: "/admission", label: "Admissions" },
     { href: "/franchise", label: "Franchisee" },
     { href: "/Ourcenters", label: "Our Centers" },

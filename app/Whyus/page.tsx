@@ -8,11 +8,13 @@ import { loadSlim } from "tsparticles-slim";
 import type { Engine } from "tsparticles-engine";
 import { ShieldCheck, HeartHandshake, Sparkles, BookHeart, School, Smile } from "lucide-react";
 import { Fredoka, Nunito } from "next/font/google";
+import Navbar from "@/app/navbar/navbar";
 import safetyImage from "../../public/compressed/young-european-female-with-daugheters-posing-isolated-white-surface.jpg.webp";
 import affectionImage from "../../public/compressed/young-beautiful-darkhaired-mother-holds-her-newborn-daughter-her-arms-cozy-home-family-portrait-motherhood-young-woman-kisses-her-2-month-old-baby.jpg.webp";
 import learningImage from "../../public/compressed/young-child-is-thoughtfully-engaged-with-abacus-suggesting-learning-play-environment.jpg.webp";
 const headingFont = Fredoka({ subsets: ["latin"], weight: ["600"] });
 const bodyFont = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800"] });
+
 
 /* ═══════════════════════ DOODLE COMPONENTS ═══════════════════════ */
 
@@ -191,7 +193,7 @@ export default function WhyUsPage() {
   return (
     <div className={`overflow-x-hidden text-slate-800 ${bodyFont.className}`}
       style={{ background: "linear-gradient(180deg,#fffaf7 0%,#fff5ee 100%)" }}>
-
+      <Navbar />
       {/* ─────────────────────────────────────────────────────────────
           HERO — image mosaic + headline
       ───────────────────────────────────────────────────────────── */}

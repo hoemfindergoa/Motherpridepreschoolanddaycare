@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Navbar from "@/app/navbar/navbar";
 import { 
   Heart, Sparkles, ShieldCheck, BookOpen, Users, 
   Target, Compass, Image as ImageIcon, ArrowRight 
@@ -54,6 +55,7 @@ const values = [
 export default function AboutPage() {
   return (
     <div className={`relative overflow-x-hidden bg-[#F7F5E5] text-black ${spaceMono.className}`}>
+      <Navbar />
 
 
   <div>

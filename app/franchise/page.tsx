@@ -7,6 +7,7 @@ import { FranchiseFormSchemaType } from "@/lib/schema";
 import { PostgrestSingleResponse } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import FranchisePage from "@/components/Franchiseform";
+import Navbar from "@/app/navbar/navbar";
 export default function Page() {
   const router = useRouter();
   
@@ -76,6 +77,7 @@ export default function Page() {
 
   return (
     <div>
+      <Navbar/>
       <FranchisePage onHandleSubmit={onHandleSubmit} defaultFranchise={defaultFranchise} isLoading={isLoading} />
     </div>
   );

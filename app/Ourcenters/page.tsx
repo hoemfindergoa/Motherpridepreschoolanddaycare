@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Fredoka, Nunito } from "next/font/google";
 import Link from "next/link";
+import Navbar from "@/app/navbar/navbar";
 
 // --- SUPABASE CLIENT ---
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
@@ -201,7 +202,7 @@ export default function CentersPage() {
 
   return (
     <div className={`relative overflow-x-hidden bg-[#fffaf7] text-slate-800 min-h-screen ${bodyFont.className}`}>
-      
+      <Navbar />
       {/* Background Doodles */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-24 left-10 rotate-12"><DoodleStar size={50} color="#f29b54" opacity={0.15} /></div>

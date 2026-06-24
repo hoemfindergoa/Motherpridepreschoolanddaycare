@@ -12,6 +12,7 @@ import nurseryImage from "../../public/compressed/young-girl-sitting-table-drawi
 import lkgImage from "../../public/compressed/young-child-is-thoughtfully-engaged-with-abacus-suggesting-learning-play-environment.jpg.webp";
 import ukgImage from "../../public/compressed/elementary-school-teacher-with-class.jpg.webp";
 import daycareImage from "../../public/compressed/happy-family-home-mother-lifting-air-little-toddler-child-daughter-mom-baby-girl-playing-h.jpg.webp";
+import Navbar from "../navbar/navbar";
 
 const headingFont = Fredoka({ subsets: ["latin"], weight: ["600"] });
 const bodyFont = Nunito({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
@@ -280,6 +281,7 @@ const ProgramSection = ({ program, index }: { program: ProgramData; index: numbe
 export default function ProgramsPage() {
   return (
     <div className={`overflow-x-hidden text-slate-800 ${bodyFont.className}`}>
+      <Navbar />
       
       {/* Hero Intro Section */}
       <section className="bg-[#fffaf7] px-6 pb-12 pt-32 md:px-10 lg:px-16">

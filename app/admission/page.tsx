@@ -6,6 +6,7 @@ import { defaultEmail } from "@/lib/data";
 import { createEmail } from "@/lib/actions/blog";
 import { EmailFormschemaType } from "@/lib/schema";
 import { PostgrestSingleResponse } from "@supabase/supabase-js";
+import Navbar from "@/app/navbar/navbar";
 import { toast } from "sonner";
 export default function Page() {
   const router = useRouter();
@@ -76,6 +77,7 @@ export default function Page() {
 
   return (
     <div className="">
+      <Navbar />
       <AdmissionPage  onHandleSubmit={onHandleSubmit} 
           defaultEmail={defaultEmail} 
           isLoading={isLoading}  />
