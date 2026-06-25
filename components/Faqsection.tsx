@@ -89,6 +89,23 @@ const faqData = [
     icon: Phone
   }
 ];
+function WaveBottom({ fill }: { fill: string }) {
+  return (
+    <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
+      <svg
+        className="relative block w-full h-[50px] sm:h-[90px] lg:h-[130px]"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,64L48,53.3C96,43,192,21,288,26.7C384,32,480,64,576,74.7C672,85,768,75,864,58.7C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+          fill={fill}
+        />
+      </svg>
+    </div>
+  );
+}
 
 // --- STYLES HELPER ---
 const getThemeStyles = (color: ThemeColor) => {
@@ -179,26 +196,14 @@ const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className={ `relative w-full py-20 bg-purple-400  overflow-hidden ${bodyFont.className}`}>
+    <section className={ `relative w-full md:pb-[120px] py-20 bg-purple-400  overflow-hidden ${bodyFont.className}`}>
         <div className="absolute bottom-0 left-0 w-full z-20  overflow-hidden leading-none  pointer-events-none">
-        <svg
-          className="relative block w-full h-[60px] sm:h-[90px] lg:h-[130px]"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-        >
-          {/* Note: Change "fill-white" to match the section directly below this one */}
-          <path
-            d="M0,64L48,53.3C96,43,192,21,288,26.7C384,32,480,64,576,74.7C672,85,768,75,864,58.7C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-            className="fill-purple-400"
-          ></path>
-        </svg>
       </div>
-         <div className="absolute bottom-20 -left-8 w-36 lg:w-[400px] opacity-100 z-0 hidden md:block rotate-[5deg]">
+         <div className="absolute bottom-20 left-8 w-36 lg:w-[200px] opacity-100 z-0 hidden md:block rotate-[5deg]">
         <Image src={deer} alt="Decorative Tree" className="w-full h-auto object-contain" />
       </div>
 
-       <div className="absolute top-2 right-4 w-48 lg:w-[350px] opacity-100 z-0 hidden md:block rotate-[-5deg]">
+       <div className="absolute top-2 right-4 w-48 lg:w-[200px] opacity-100 z-0 hidden md:block rotate-[-5deg]">
         <Image src={sunflower} alt="Decorative Green Tree" className="w-full h-auto object-contain" />
       </div>
       
@@ -238,6 +243,7 @@ const FaqSection: React.FC = () => {
         </div>
 
       </div>
+        <WaveBottom fill="#dbeafe" />
     </section>
   );
 };

@@ -29,9 +29,8 @@ import yellomountain from "@/public/websiteassest/yelllowhill.png";
 import bluemountain from "@/public/websiteassest/blueehill.png";
 
 const navLinks = [
-  { href: "/about", label: "About Us", color: "#ffce54" }, // Yellow
   { href: "/Programs", label: "Programs", color: "#75C05B" }, // Green
-  { href: "/why-us", label: "Why Us", color: "#E2324E" }, // Pink
+  { href: "/Whyus", label: "Why Us", color: "#E2324E" }, // Pink
   { href: "/admission", label: "Admissions", color: "#A275E1" }, // Purple
   { href: "/franchise", label: "Franchisee", color: "#E54D35" }, // Orange
   { href: "/Ourcenters", label: "Our Centers", color: "#38bdf8" }, // Blue

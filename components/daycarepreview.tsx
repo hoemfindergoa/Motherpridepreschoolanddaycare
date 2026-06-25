@@ -55,11 +55,11 @@ export default function DaycareSection() {
           ></path>
         </svg>
       </div>
-       <div className="absolute bottom-14 -left-8 w-36 lg:w-[400px] opacity-70 z-0 hidden md:block rotate-[5deg]">
+       <div className="absolute bottom-14 -left-8 w-36 lg:w-[200px] opacity-70 z-0 hidden md:block rotate-[5deg]">
         <Image src={christmastree} alt="Decorative Tree" className="w-full h-auto object-contain" />
       </div>
 
-       <div className="absolute -top-16 -right-10 w-48 lg:w-[350px] opacity-100 z-0 hidden md:block rotate-[-5deg]">
+       <div className="absolute top-2 -right-10 w-48 lg:w-[200px] opacity-100 z-0 hidden md:block rotate-[-5deg]">
         <Image src={treeImage} alt="Decorative Green Tree" className="w-full h-auto object-contain" />
       </div>
      
