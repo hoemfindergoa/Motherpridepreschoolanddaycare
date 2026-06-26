@@ -139,7 +139,13 @@ const HeroBanner: React.FC = () => {
                     : "bg-[#E2324E] text-white border-2 border-[#E2324E] shadow-[0_4px_0_#9f1f33] hover:-translate-y-1 hover:shadow-[0_6px_0_#9f1f33] active:translate-y-1 active:shadow-none"
                 }`}
               >
-                Book a Call
+                <motion.button
+                                  whileHover={{ scale: 1.01 }}
+                                  whileTap={{ scale: 0.99 }}
+                                  onClick={() => window.open("https://wa.me/919999606090", "_blank")}
+                                >
+                                    9999606090
+                                </motion.button>
               </Link>
             </div>
           </nav>
@@ -199,7 +205,13 @@ const HeroBanner: React.FC = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-8 py-4 bg-[#ffce54] text-[#004e9a] border-2 border-[#004e9a] shadow-[4px_4px_0_#004e9a] text-xl font-bold rounded-full transition-transform active:translate-y-1 active:shadow-none"
               >
-                Book a Call →
+                  <motion.button
+                                  whileHover={{ scale: 1.01 }}
+                                  whileTap={{ scale: 0.99 }}
+                                  onClick={() => window.open("https://wa.me/919999606090", "_blank")}
+                                >
+                                    9999606090
+                                </motion.button>
               </Link>
             </motion.div>
           </motion.div>
