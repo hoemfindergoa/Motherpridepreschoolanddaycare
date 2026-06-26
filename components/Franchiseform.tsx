@@ -82,7 +82,7 @@ const benefitSlides = [
     asset: jupiter,
     color: "#A275E1",
     animation: "animate-[spin_18s_linear_infinite]",
-    stat: "500+",
+    stat: "50+",
     statLabel: "Partner centres",
   },
   {
@@ -336,7 +336,7 @@ export default function FranchisePage({
             <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 md:left-10">
               <span className="text-white text-[12px] font-black uppercase tracking-widest opacity-70">Partnering across India</span>
-              <p className="text-white text-[22px] md:text-[30px] font-black leading-tight mt-1">500+ centres. Growing every year.</p>
+              <p className="text-white text-[22px] md:text-[30px] font-black leading-tight mt-1"> Growing every year.</p>
             </div>
           </motion.div>
 
