@@ -50,19 +50,23 @@ export default function Navbar() {
   return (
     <>
       {/* --- TOP LEFT LOGO AREA (Only visible at top) --- */}
-      <Link href="/">
-      <div 
-        className={`absolute top-0 left-0 z-[60] transition-opacity duration-300 ${
-          scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
+      <Link className="z-40" href="/">
+     <div>
+       <div 
+        className={`absolute top-0 left-0 z-[110] transition-opacity duration-300 ${
+          scrolled ? "opacity-0 " : "opacity-100"
         }`}
       >
+            <Link href="/">
         <div className="w-[180px] md:w-[380px] relative">
           <Image src={logobackground} alt="Motherhood Preschool Background" className="w-full h-auto object-contain" />
           <div className="absolute w-[110px] md:w-[340px] top-0 inset-0 flex items-center justify-center pt-1 pr-2 pb-3 pl-3">
               <Image src={logo} alt="Motherhood Preschool Logo" className="w-full h-auto object-contain" />
           </div>
         </div>
+            </Link>
       </div>
+     </div>
             </Link>
 
       {/* --- STICKY NAVIGATION BAR --- */}
@@ -77,7 +81,7 @@ export default function Navbar() {
           {/* Sticky Header Logo appears only on scroll */}
           <div className={`transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
             <Link href="/">
-              <Image src={logo} alt="Motherhood Preschool" width={160} height={50} className="object-contain" />
+              <Image src={logo} alt="Motherhood Preschool" width={160} height={80} className=" h-[50px] w-[220px]" />
             </Link>
           </div>
 

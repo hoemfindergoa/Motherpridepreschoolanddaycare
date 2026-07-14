@@ -92,7 +92,7 @@ const HeroBanner: React.FC = () => {
           {/* Logo appears only on scroll */}
           <div className={`transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
             <Link href="/">
-              <Image src={logo} alt="Motherhood Preschool" width={160} height={50} className="object-contain" />
+              <Image src={logo} alt="Motherhood Preschool" width={160} height={50} className="h-[50px] w-[220px]" />
             </Link>
           </div>
 
