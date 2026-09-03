@@ -66,7 +66,7 @@ const HeroBanner: React.FC = () => {
 
   return (
     <section className="relative w-full min-h-[70vh] md:min-h-[100vh] bg-[#004e9a] flex flex-col overflow-hidden font-sans">
-       <div className="absolute -bottom-8 left-0 w-full overflow-hidden z-50 leading-none  pointer-events-none">
+      <div className="absolute -bottom-8 left-0 w-full overflow-hidden z-50 leading-none  pointer-events-none">
         <svg
           className="relative block w-full h-[60px] sm:h-[90px] lg:h-[130px]"
           xmlns="http://www.w3.org/2000/svg"
@@ -80,15 +80,14 @@ const HeroBanner: React.FC = () => {
           ></path>
         </svg>
       </div>
-      
+
       {/* --- STICKY NAVIGATION BAR --- */}
       <header
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-          scrolled ? "bg-white shadow-md py-3" : "bg-transparent py-6 lg:py-8"
-        }`}
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-white shadow-md py-3" : "bg-transparent py-6 lg:py-8"
+          }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center">
-          
+
           {/* Logo appears only on scroll */}
           <div className={`transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
             <Link href="/">
@@ -105,14 +104,13 @@ const HeroBanner: React.FC = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative py-2 font-bold text-[16px] transition-colors duration-300 z-10 ${
-                    scrolled 
-                      ? isActive ? "text-[#E2324E]" : "text-[#004e9a] hover:text-[#E2324E]" 
-                      : "text-white"
-                  }`}
+                  className={`relative py-2 font-bold text-[16px] transition-colors duration-300 z-10 ${scrolled
+                    ? isActive ? "text-[#E2324E]" : "text-[#004e9a] hover:text-[#E2324E]"
+                    : "text-white"
+                    }`}
                 >
                   {link.label}
-                  
+
                   {/* Static, Bolder Scribble Underline (Always visible) */}
                   <div className="absolute -bottom-1.5 left-0 w-full h-[8px] pointer-events-none" style={{ color: link.color }}>
                     <svg viewBox="0 0 100 20" preserveAspectRatio="none" className="w-full h-full overflow-visible drop-shadow-sm">
@@ -128,24 +126,23 @@ const HeroBanner: React.FC = () => {
                 </Link>
               );
             })}
-            
+
             {/* Book a Call CTA */}
             <div className="ml-2">
               <Link
                 href="/admission"
-                className={`block px-7 py-2.5 rounded-full font-bold transition-all duration-300 ${
-                  scrolled
-                    ? "bg-[#E2324E] text-white hover:bg-[#c92a43] hover:-translate-y-1 hover:shadow-lg"
-                    : "bg-[#E2324E] text-white border-2 border-[#E2324E] shadow-[0_4px_0_#9f1f33] hover:-translate-y-1 hover:shadow-[0_6px_0_#9f1f33] active:translate-y-1 active:shadow-none"
-                }`}
+                className={`block px-7 py-2.5 rounded-full font-bold transition-all duration-300 ${scrolled
+                  ? "bg-[#E2324E] text-white hover:bg-[#c92a43] hover:-translate-y-1 hover:shadow-lg"
+                  : "bg-[#E2324E] text-white border-2 border-[#E2324E] shadow-[0_4px_0_#9f1f33] hover:-translate-y-1 hover:shadow-[0_6px_0_#9f1f33] active:translate-y-1 active:shadow-none"
+                  }`}
               >
                 <motion.button
-                                  whileHover={{ scale: 1.01 }}
-                                  whileTap={{ scale: 0.99 }}
-                                  onClick={() => window.open("https://wa.me/919999606090", "_blank")}
-                                >
-                                    9999606090
-                                </motion.button>
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  onClick={() => window.open("https://wa.me/918929296266", "_blank")}
+                >
+                  8929296266
+                </motion.button>
               </Link>
             </div>
           </nav>
@@ -153,9 +150,8 @@ const HeroBanner: React.FC = () => {
           {/* Mobile Nav Toggle Icon */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden z-[110] relative p-2 transition-colors duration-300 ${
-              scrolled || mobileMenuOpen ? "text-[#004e9a]" : "text-white"
-            }`}
+            className={`lg:hidden z-[110] relative p-2 transition-colors duration-300 ${scrolled || mobileMenuOpen ? "text-[#004e9a]" : "text-white"
+              }`}
           >
             {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
@@ -173,7 +169,7 @@ const HeroBanner: React.FC = () => {
             className="fixed inset-0 z-[105] bg-[#F7F5E5] flex flex-col items-center justify-center gap-6"
           >
             <div className="absolute top-20 left-10 opacity-40 w-32">
-               <Image src={cloud} alt="Cloud" className="w-full h-auto" />
+              <Image src={cloud} alt="Cloud" className="w-full h-auto" />
             </div>
 
             {navLinks.map((link, i) => (
@@ -186,9 +182,8 @@ const HeroBanner: React.FC = () => {
                 <Link
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl md:text-3xl font-black tracking-tight transition-colors ${
-                    pathname === link.href ? "text-[#E2324E]" : "text-[#004e9a] hover:text-[#E2324E]"
-                  }`}
+                  className={`text-2xl md:text-3xl font-black tracking-tight transition-colors ${pathname === link.href ? "text-[#E2324E]" : "text-[#004e9a] hover:text-[#E2324E]"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -205,13 +200,13 @@ const HeroBanner: React.FC = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-8 py-4 bg-[#ffce54] text-[#004e9a] border-2 border-[#004e9a] shadow-[4px_4px_0_#004e9a] text-xl font-bold rounded-full transition-transform active:translate-y-1 active:shadow-none"
               >
-                  <motion.button
-                                  whileHover={{ scale: 1.01 }}
-                                  whileTap={{ scale: 0.99 }}
-                                  onClick={() => window.open("https://wa.me/919999606090", "_blank")}
-                                >
-                                    9999606090
-                                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  onClick={() => window.open("https://wa.me/918929296266", "_blank")}
+                >
+                  8929296266
+                </motion.button>
               </Link>
             </motion.div>
           </motion.div>
@@ -248,9 +243,9 @@ const HeroBanner: React.FC = () => {
       <div className="absolute top-0 left-0 z-[60]">
         <div className="w-[180px] md:w-[380px]">
           <Image src={logobackground} alt="Motherhood Preschool Background" className="w-full h-auto object-contain" />
-            <div className="absolute w-[110px] md:w-[340px] top-0 inset-0 flex items-center justify-center pt-1 pr-2 pb-3 pl-3">
-              <Image src={logo} alt="Motherhood Preschool Logo" className="w-full h-auto object-contain" />
-            </div>
+          <div className="absolute w-[110px] md:w-[340px] top-0 inset-0 flex items-center justify-center pt-1 pr-2 pb-3 pl-3">
+            <Image src={logo} alt="Motherhood Preschool Logo" className="w-full h-auto object-contain" />
+          </div>
         </div>
       </div>
 
@@ -284,7 +279,7 @@ const HeroBanner: React.FC = () => {
       <motion.div animate={{ x: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[20%] left-[14%] z-20 w-[14%] min-w-[100px] max-w-[220px]">
         <Image src={cloud} alt="Cloud" className="w-full h-auto" />
       </motion.div>
-      
+
       <motion.div animate={{ x: [0, 8, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[32%] left-[26%] z-20 w-[9%] min-w-[60px] max-w-[160px]">
         <Image src={cloud} alt="Cloud" className="w-full h-auto scale-75" />
       </motion.div>
@@ -311,11 +306,11 @@ const HeroBanner: React.FC = () => {
       </div>
 
       <div className="absolute bottom-[1%] left-[33%] z-30 w-[5%] min-w-[40px] max-w-[90px]">
-        <Image src={orangebuilding} alt="Building" className="w-full h-auto hue-rotate-60 brightness-110" /> 
+        <Image src={orangebuilding} alt="Building" className="w-full h-auto hue-rotate-60 brightness-110" />
       </div>
-      
+
       <div className="absolute bottom-[1%] left-[39%] z-30 w-[7%] min-w-[40px] max-w-[380px]">
-        <Image src={yellowbuilding} alt="Building" className="w-full h-auto brightness-110" /> 
+        <Image src={yellowbuilding} alt="Building" className="w-full h-auto brightness-110" />
       </div>
 
       <div className="absolute bottom-[2%] left-[47%] z-20 w-[3%] min-w-[25px] max-w-[50px]">
@@ -335,7 +330,7 @@ const HeroBanner: React.FC = () => {
       <div className="absolute top-[90%] md:top-[85%] left-0 w-full h-[12%] md:h-[18%] z-40 pointer-events-none flex items-end">
         <Image src={grassbig} alt="Grass Foreground" className="w-full h-full object-cover object-bottom" priority />
       </div>
-      
+
     </section>
   );
 };
