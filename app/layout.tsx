@@ -35,7 +35,7 @@ export const metadata = {
     locale: 'en_IN',
     images: [
       {
-        url: logo,
+        url: logo.src,
       }
     ],
   },
