@@ -5,12 +5,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
-import { 
-  ChevronRight, MapPin, Phone, Mail, School, CheckCircle, 
+import {
+  ChevronRight, MapPin, Phone, Mail, School, CheckCircle,
   CalendarCheck, Star, Play, Sparkles, Loader2, Image as ImageIcon,
   Heart, ShieldCheck
 } from "lucide-react";
 import { Fredoka, Nunito, Quicksand } from 'next/font/google';
+import Navbar from "@/app/navbar/navbar";
 
 // --- SUPABASE CLIENT ---
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
@@ -85,9 +86,9 @@ type CenterDetails = {
   director: string;
   mapEmbed: string;
   facilities: string[];
-  image: string; 
-  theme: string; 
-  status: "open" | "shortly"; 
+  image: string;
+  theme: string;
+  status: "open" | "shortly";
 };
 
 // --- MAIN COMPONENT ---
@@ -101,10 +102,10 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
     const fetchCenterDetails = async () => {
       setLoading(true);
       const { data, error } = await supabase
-        .from('centers')
+        .from('motherhoodcenters')
         .select('*')
         .eq('slug', params.slug)
-        .single(); 
+        .single();
 
       if (error || !data) {
         console.error("Error fetching center details:", error);
@@ -135,7 +136,8 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
 
   return (
     <div className={`w-full flex flex-col bg-[#fffaf7] text-slate-800 overflow-x-hidden ${bodyFont.className}`}>
-      
+      <Navbar />
+
       {/* Background Doodles (Global) */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
         <div className="absolute top-32 left-10 rotate-12"><DoodleStar size={50} color="#f29b54" opacity={0.15} /></div>
@@ -149,44 +151,44 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
       ========================================= */}
       <section className="relative z-10 px-6 pt-32 pb-20 md:px-10 lg:px-16">
         <div className="mx-auto max-w-5xl text-center">
-          
+
           {/* Breadcrumb */}
-          <motion.div 
-             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-             className="inline-flex items-center gap-2 text-slate-500 text-sm font-extrabold uppercase tracking-widest bg-white/60 backdrop-blur-md px-5 py-2.5 rounded-full mb-8 shadow-sm border border-slate-100"
+          <motion.div
+            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 text-slate-500 text-sm font-extrabold uppercase tracking-widest bg-white/60 backdrop-blur-md px-5 py-2.5 rounded-full mb-8 shadow-sm border border-slate-100"
           >
-              <Link href="/" className="hover:text-[#e83d59] transition-colors">Home</Link>
-              <ChevronRight className="w-3 h-3 opacity-60" />
-              <Link href="/centers" className="hover:text-[#e83d59] transition-colors">Centers</Link>
-              <ChevronRight className="w-3 h-3 opacity-60" />
-              <span className="text-[#e83d59] truncate max-w-[150px] md:max-w-none">{center.city}</span>
+            <Link href="/" className="hover:text-[#e83d59] transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3 opacity-60" />
+            <Link href="/centers" className="hover:text-[#e83d59] transition-colors">Centers</Link>
+            <ChevronRight className="w-3 h-3 opacity-60" />
+            <span className="text-[#e83d59] truncate max-w-[150px] md:max-w-none">{center.city}</span>
           </motion.div>
 
           {/* Title Area */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className={`text-5xl md:text-7xl leading-[1.05] text-slate-900 mb-6 ${headingFont.className}`}>
-              Welcome to <br className="md:hidden" />
+              Welcome to Motherhood <br className="md:hidden" />
               <span className="text-[#e83d59]">{center.name}</span>
             </h1>
-            
+
             <div className="flex flex-wrap justify-center items-center gap-3 mb-10">
-               <span className="flex items-center gap-2 bg-blue-50 text-[#3b6ca8] px-4 py-2 rounded-full font-bold text-sm shadow-sm">
-                 <MapPin className="w-4 h-4" /> {center.state}
-               </span>
-               {center.status === "shortly" ? (
-                  <span className="flex items-center gap-2 bg-amber-100 text-amber-600 px-4 py-2 rounded-full font-bold text-sm shadow-sm">
-                    <Sparkles className="w-4 h-4" /> Opening Soon
-                  </span>
-               ) : (
-                  <span className="flex items-center gap-2 bg-emerald-100 text-emerald-600 px-4 py-2 rounded-full font-bold text-sm shadow-sm">
-                    <CheckCircle className="w-4 h-4" /> Admissions Open
-                  </span>
-               )}
+              <span className="flex items-center gap-2 bg-blue-50 text-[#3b6ca8] px-4 py-2 rounded-full font-bold text-sm shadow-sm">
+                <MapPin className="w-4 h-4" /> {center.state}
+              </span>
+              {center.status === "shortly" ? (
+                <span className="flex items-center gap-2 bg-amber-100 text-amber-600 px-4 py-2 rounded-full font-bold text-sm shadow-sm">
+                  <Sparkles className="w-4 h-4" /> Opening Soon
+                </span>
+              ) : (
+                <span className="flex items-center gap-2 bg-emerald-100 text-emerald-600 px-4 py-2 rounded-full font-bold text-sm shadow-sm">
+                  <CheckCircle className="w-4 h-4" /> Admissions Open
+                </span>
+              )}
             </div>
           </motion.div>
 
           {/* Glassmorphic About Card */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full rounded-[44px] bg-white/70 p-8 shadow-[0_24px_80px_rgba(232,61,89,0.08)] backdrop-blur-md md:p-12 border border-white"
           >
@@ -204,7 +206,7 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
       ========================================= */}
       <section className="relative z-10 px-6 pb-20 md:px-10 lg:px-16">
         <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6">
-          
+
           {/* Address */}
           <div className="group relative flex flex-col items-center text-center rounded-[36px] bg-white/80 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_56px_rgba(15,23,42,0.06)]">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-50 text-rose-500 transition-transform group-hover:scale-110">
@@ -240,16 +242,16 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
       ========================================= */}
       <section className="relative z-10 bg-[#f0f7ff] pt-20 pb-28 px-6 md:px-10 lg:px-16 overflow-hidden">
         <WaveBottom fill="#fffaf7" /> {/* Transitioning back to main bg later */}
-        
+
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
-             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-bold text-[#3b6ca8] shadow-sm mb-4">
-               <ShieldCheck className="h-4 w-4" />
-               Campus Details
-             </div>
-             <h2 className={`text-4xl md:text-5xl text-slate-900 ${headingFont.className}`}>
-               Designed for <span className="text-[#3b6ca8]">Joy & Safety</span>
-             </h2>
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-bold text-[#3b6ca8] shadow-sm mb-4">
+              <ShieldCheck className="h-4 w-4" />
+              Campus Details
+            </div>
+            <h2 className={`text-4xl md:text-5xl text-slate-900 ${headingFont.className}`}>
+              Designed for <span className="text-[#3b6ca8]">Joy & Safety</span>
+            </h2>
           </div>
 
           {/* Facilities Pill Grid */}
@@ -270,13 +272,13 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
 
           {/* Placeholder for Future Photo Gallery */}
           <div className="w-full rounded-[44px] bg-white/60 p-8 md:p-12 border-2 border-dashed border-blue-200 text-center backdrop-blur-sm">
-             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-blue-100 text-[#3b6ca8] mb-6">
-                <ImageIcon className="h-10 w-10" />
-             </div>
-             <h3 className={`text-3xl text-slate-800 mb-3 ${headingFont.className}`}>Campus Gallery</h3>
-             <p className="text-slate-500 max-w-md mx-auto font-medium">
-               We are currently capturing beautiful moments from this center. High-quality photos of our classrooms, play areas, and events will be added here shortly.
-             </p>
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-blue-100 text-[#3b6ca8] mb-6">
+              <ImageIcon className="h-10 w-10" />
+            </div>
+            <h3 className={`text-3xl text-slate-800 mb-3 ${headingFont.className}`}>Campus Gallery</h3>
+            <p className="text-slate-500 max-w-md mx-auto font-medium">
+              We are currently capturing beautiful moments from this center. High-quality photos of our classrooms, play areas, and events will be added here shortly.
+            </p>
           </div>
         </div>
       </section>
@@ -286,7 +288,7 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
       ========================================= */}
       <section className="relative z-10 bg-[#fffaf7] pt-20 pb-28 px-6 md:px-10 lg:px-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          
+
           {/* Big Map Card */}
           <div className="flex flex-col overflow-hidden rounded-[44px] bg-white p-4 shadow-[0_24px_80px_rgba(232,61,89,0.08)]">
             <div className="px-6 py-5 md:px-8">
@@ -296,7 +298,7 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
               </div>
               <h2 className={`text-3xl text-slate-900 ${headingFont.className}`}>Find us on the map</h2>
             </div>
-            
+
             <div className="relative h-[380px] w-full overflow-hidden rounded-[32px] md:h-[400px]">
               <iframe
                 src={center.mapEmbed}
@@ -322,18 +324,18 @@ export default function CenterProfile({ params }: { params: { slug: string } }) 
             </div>
 
             <div className="rounded-[40px] bg-[#3b6ca8] p-8 text-white shadow-[0_24px_70px_rgba(59,108,168,0.22)]">
-               <h3 className={`text-3xl mb-4 ${headingFont.className}`}>
-                 {center.status === "shortly" ? "Be the First to Join!" : "Ready to Join?"}
-               </h3>
-               <p className="text-blue-100 font-medium mb-8">
-                 {center.status === "shortly" 
-                   ? `Pre-registrations are opening for ${center.name}. Secure a spot in our founding batch.` 
-                   : `Admissions are open for the upcoming session. Let's begin the journey.`
-                 }
-               </p>
-               <Link href="/admission" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#3b6ca8] transition-all hover:-translate-y-1 hover:shadow-lg">
-                  {center.status === "shortly" ? "Pre-Register Now" : "Start Admission"} <Play className="h-4 w-4 fill-[#3b6ca8]" />
-               </Link>
+              <h3 className={`text-3xl mb-4 ${headingFont.className}`}>
+                {center.status === "shortly" ? "Be the First to Join!" : "Ready to Join?"}
+              </h3>
+              <p className="text-blue-100 font-medium mb-8">
+                {center.status === "shortly"
+                  ? `Pre-registrations are opening for ${center.name}. Secure a spot in our founding batch.`
+                  : `Admissions are open for the upcoming session. Let's begin the journey.`
+                }
+              </p>
+              <Link href="/admission" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#3b6ca8] transition-all hover:-translate-y-1 hover:shadow-lg">
+                {center.status === "shortly" ? "Pre-Register Now" : "Start Admission"} <Play className="h-4 w-4 fill-[#3b6ca8]" />
+              </Link>
             </div>
           </div>
 
