@@ -2,15 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  ShieldAlert, Ban, Lock, Megaphone, UserCheck, 
-  Settings, FileSignature, Copyright, AlertTriangle, 
+import {
+  ShieldAlert, Ban, Lock, Megaphone, UserCheck,
+  Settings, FileSignature, Copyright, AlertTriangle,
   ShieldCheck, Gavel, Scale, Info, FileText, Sparkles
 } from "lucide-react";
 import { Fredoka, Nunito } from 'next/font/google';
 
 // Assuming you have this CTA component available based on your import
-import Ctasection from "@/components/HomeCta"; 
+import Ctasection from "@/components/HomeCta";
 
 // --- FONTS ---
 const headingFont = Fredoka({ subsets: ["latin"], weight: ["600"] });
@@ -77,7 +77,7 @@ const policies = [
 export default function PrivacyPolicyPage() {
   return (
     <div className={`relative overflow-x-hidden bg-[#fffaf7] text-slate-800 ${bodyFont.className}`}>
-      
+
       {/* Background Doodles (Global) */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
         <div className="absolute top-32 left-10 rotate-12"><DoodleFlower size={60} color="#10b981" opacity={0.15} /></div>
@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
       ────────────────────────────────────────────────────────────── */}
       <section className="relative z-10 px-6 pt-32 pb-16 md:px-10 lg:px-16 text-center">
         <div className="mx-auto max-w-4xl">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -100,14 +100,14 @@ export default function PrivacyPolicyPage() {
               <FileText className="h-4 w-4" />
               Legal & Compliance
             </div>
-            
+
             <h1 className={`mx-auto text-5xl leading-[1.1] text-slate-900 sm:text-6xl lg:text-7xl ${headingFont.className}`}>
               Our commitment to your
               <span className="block text-[#3b6ca8]">trust and safety.</span>
             </h1>
-            
+
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl font-medium">
-              Please read our policies carefully to ensure a safe, transparent, and secure experience for everyone in the MothersPride family.
+              Please read our policies carefully to ensure a safe, transparent, and secure experience for everyone in the Motherhood family.
             </p>
           </motion.div>
         </div>
@@ -129,25 +129,23 @@ export default function PrivacyPolicyPage() {
                 className="group relative flex flex-col rounded-[36px] bg-white/70 p-8 shadow-[0_16px_56px_rgba(15,23,42,0.04)] backdrop-blur-md border border-white transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-xl overflow-hidden"
               >
                 {/* Tone Mapping */}
-                <div className={`mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${
-                  item.tone === "rose" ? "bg-rose-100 text-rose-500" :
-                  item.tone === "amber" ? "bg-amber-100 text-amber-500" :
-                  item.tone === "blue" ? "bg-blue-100 text-blue-500" :
-                  "bg-emerald-100 text-emerald-500"
-                }`}>
+                <div className={`mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${item.tone === "rose" ? "bg-rose-100 text-rose-500" :
+                    item.tone === "amber" ? "bg-amber-100 text-amber-500" :
+                      item.tone === "blue" ? "bg-blue-100 text-blue-500" :
+                        "bg-emerald-100 text-emerald-500"
+                  }`}>
                   <item.icon className="h-6 w-6" />
                 </div>
-                
+
                 <h3 className={`text-2xl text-slate-900 ${headingFont.className}`}>{item.title}</h3>
                 <p className="mt-3 text-base font-medium leading-relaxed text-slate-600 z-10">{item.content}</p>
 
                 {/* Subtle corner highlight */}
-                <div className={`absolute -bottom-6 -right-6 h-24 w-24 rounded-full opacity-[0.04] transition-transform duration-500 group-hover:scale-150 ${
-                  item.tone === "rose" ? "bg-rose-500" :
-                  item.tone === "amber" ? "bg-amber-500" :
-                  item.tone === "blue" ? "bg-blue-500" :
-                  "bg-emerald-500"
-                }`} />
+                <div className={`absolute -bottom-6 -right-6 h-24 w-24 rounded-full opacity-[0.04] transition-transform duration-500 group-hover:scale-150 ${item.tone === "rose" ? "bg-rose-500" :
+                    item.tone === "amber" ? "bg-amber-500" :
+                      item.tone === "blue" ? "bg-blue-500" :
+                        "bg-emerald-500"
+                  }`} />
               </motion.div>
             ))}
           </div>
