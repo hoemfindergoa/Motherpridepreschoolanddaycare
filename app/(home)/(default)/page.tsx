@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Clock3, Heart, School, ShieldCheck, Sparkles } from "lucide-react";
-import { Fredoka, Nunito } from "next/font/google";import HeroBanner from '@/components/heropreview'
+import { Fredoka, Nunito } from "next/font/google";
+import HeroBanner from '@/components/heropreview'
 import ProgramPreview from '@/components/Programpreview'
 import DaycareSection from '@/components/daycarepreview'
 import FaqSection from '@/components/Faqsection'
