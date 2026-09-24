@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = { 
-    images:{
-        remotePatterns:[{
-            hostname:"avatars.githubusercontent.com",
-            protocol:"https",
+const nextConfig = {
+    images: {
+        remotePatterns: [{
+            hostname: "avatars.githubusercontent.com",
+            protocol: "https",
         },
         {
-            hostname:"lh3.googleusercontent.com",
-            protocol:"https",
+            hostname: "lh3.googleusercontent.com",
+            protocol: "https",
         },
         {
-            hostname:"scontent-lhr6-2.cdninstagram.com",
-            protocol:"https",
+            hostname: "scontent-lhr6-2.cdninstagram.com",
+            protocol: "https",
         },
         {
             protocol: "https",
@@ -30,17 +30,20 @@ const nextConfig = {
             protocol: "https",
             hostname: "gist.github.com",
         },
-    {
+        {
             protocol: "https",
             hostname: "google.com",
-        }
+        },
+        { hostname: "*.googletagmanager.com", protocol: "https" },
+        { hostname: "*.google-analytics.com", protocol: "https" },
+        { hostname: "lh3.googleusercontent.com", protocol: "https" }
 
 
 
-       
-    ]
 
-        
+        ]
+
+
     }
 }
 module.exports = nextConfig;
